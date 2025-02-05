@@ -1,0 +1,139 @@
+/* Global Styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+/* Main Container */
+.order-container {
+    max-width: 1200px;
+    background-color: #fff;
+    border-radius: 8px;
+}
+
+/* Heading */
+.order-container h1 {
+    text-align: center;
+    font-size: 28px;
+    color: #000000;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+/* Order List */
+.order-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Individual Order Item */
+.order-item {
+    background-color: #fefefe;
+    padding: 20px;
+    transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+/* Order Heading */
+.order-item h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+/* Order Details */
+.order-item p {
+    font-size: 14px;
+    color: #555;
+    margin: 5px 0;
+}
+
+/* Order Items List */
+.order-item ul {
+    margin-top: 15px;
+    padding-left: 20px;
+    list-style: disc;
+}
+
+.order-item li {
+    font-size: 14px;
+    color: #444;
+    margin-bottom: 8px;
+}
+
+/* Item Title */
+.order-item-title {
+    font-weight: 600;
+    color: #333;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Images Section */
+.order-images {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.order-item-img {
+    width: 80px;
+    height: 80px;
+    border: 1px solid #ddd;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+
+/* Cancel Button */
+.cancel-btn {
+    margin-top: 15px;
+    padding: 10px 15px;
+    background-color: #ff4d4d;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.cancel-btn:hover {
+    background-color: #e04444;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .order-container {
+        padding: 15px;
+    }
+
+    .order-item {
+        padding: 15px;
+    }
+
+    .order-item h3 {
+        font-size: 16px;
+    }
+
+    .order-item p,
+    .order-item li {
+        font-size: 13px;
+    }
+
+    .order-item-img {
+        width: 80px;
+        height: 80px;
+    }
+
+    .cancel-btn {
+        padding: 8px 15px;
+        font-size: 13px;
+    }
+}

@@ -1,0 +1,25 @@
+@font-face {
+    font-family: 'CustomFont';
+    src: url('../fonts//Louis-George-Cafe-Light.ttf') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'CustomFont';
+    src: url('../fonts//Louis-George-Cafe-Medium.ttf') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'CustomFont';
+    src: url('../fonts/Louis-George-Cafe-Bold.ttf') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+
+/* Optional: Add global font-family if needed */
+body {
+    font-family: 'CustomFont', sans-serif;
+}

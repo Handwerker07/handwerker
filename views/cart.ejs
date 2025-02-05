@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopping Cart | The Handwerker</title>
+  <link rel="stylesheet" href="/css/cart.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/all.min.css">
+  <link rel="stylesheet" href="/css/fonts.css">
+
+  <!-- Favicons -->
+  <link rel="apple-touch-icon" sizes="57x57" href="/favicons/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/favicons/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/favicons/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/favicons/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/favicons/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/favicons/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/favicons/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/favicons/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicons/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicons/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+  <link rel="manifest" href="/favicons/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/favicons/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+</head>
+
+<body>
+  <%- include('partials/header') %>
+
+  <div class="cart-container">
+    <h1>Your Shopping Cart</h1>
+
+    <% if (cart && cart.items.length> 0) { %>
+    <div class="cart-content">
+      <div class="cart-items">
+        <table class="cart-table">
+          <thead>
+            <tr>
+              <th>Product</th>
+              <th>Price</th>
+              <th>Quantity</th>
+              <th>Subtotal</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% cart.items.forEach(item => { %>
+            <tr>
+              <td>
+                <div class="cart-item">
+                  <img src="/images/items/<%= item.item.photos[0]._id %>.webp" alt="<%= item.item.name %>" class="cart-item-img">
+                  <div class="cart-item-details">
+                    <h3>
+                      <a href="/product/<%= item.item._id %>" class="product-link">
+                        <%= item.item.name.length > 20 ? item.item.name.substring(0, 20) + '...' : item.item.name %>
+                      </a>
+                    </h3>
+                    <% if (item.item.stock === 0) { %>
+                    <span class="out-of-stock-label">Out of Stock</span>
+                    <% } %>
+                  </div>
+                </div>
+              </td>
+              <!-- Price Column -->
+              <td>
+                <% if (item.item.offer > 0) { %>
+                <span class="discounted-price">₨<%= (item.priceAtPurchase - (item.priceAtPurchase * item.item.offer / 100))
+                        .toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 }) %></span>
+                <br>
+                <span class="original-price" style="text-decoration: line-through; color: #999;">
+                  ₨<%= item.priceAtPurchase.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 }) %>
+                </span>
+                <% } else { %>
+                <span class="regular-price">₨<%= item.priceAtPurchase.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 }) %></span>
+                <% } %>
+              </td>
+              <!-- Quantity Column -->
+              <td>
+                <%= item.quantity.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 }) %>
+              </td>
+              <!-- Subtotal Column -->
+              <td>
+                <% if (item.item.offer > 0) { %>
+                ₨<%= ((item.priceAtPurchase - (item.priceAtPurchase * item.item.offer / 100)) * item.quantity)
+                        .toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 }) %>
+                <% } else { %>
+                ₨<%= (item.priceAtPurchase * item.quantity).toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 }) %>
+                <% } %>
+              </td>
+              <!-- Actions Column -->
+              <td>
+                <form action="/cart/remove/<%= item.item._id %>" method="POST" class="remove-form" style="display:inline;">
+                  <button type="submit" class="remove-btn" title="Remove this item">
+                    <i class="fas fa-trash"></i>
+                  </button>
+                </form>
+              </td>
+            </tr>
+            <% }); %>
+
+          </tbody>
+        </table>
+      </div>
+
+      <div class="checkout-section">
+        <h3>Customer Information</h3>
+        <form action="/order/checkout" method="POST" id="checkout-form">
+          <!-- Address Input -->
+          <label for="address">Delivery Address:</label>
+          <input type="text" id="address" name="address" placeholder="e.g., 123 Main Street, Apartment 4B" required>
+
+          <!-- Phone Number Input -->
+          <label for="phoneNumber">Phone Number:</label>
+          <input type="text" id="phoneNumber" name="phoneNumber" placeholder="e.g., +230 1234 5678" required>
+
+          <!-- Payment Method Selection -->
+          <label>Payment Method:</label>
+          <div class="payment-method">
+            <input type="radio" name="paymentMethod" value="bank" id="payBank" checked>
+            <label for="payBank">Pay Via Bank</label>
+            <input type="radio" name="paymentMethod" value="cod" id="payCOD">
+            <label for="payCOD">Cash on Delivery</label>
+          </div>
+
+          <!-- Bank Payment Details (this section will expand/collapse smoothly) -->
+          <div id="bank-details">
+            <p><strong>Our Bank Account Details:</strong></p>
+            <p>Account Name: The Handwerker</p>
+            <p>Account Number: 123456789</p>
+            <p>Bank: XYZ Bank</p>
+            <p>Branch: ABC</p>
+            <p>After sending your payment, please enter your transaction ID below:</p>
+            <input type="text" name="transactionId" id="transactionId" placeholder="Enter Transaction ID">
+          </div>
+
+
+          <!-- Submit Button -->
+          <button type="submit" class="checkout-btn">Place Order</button>
+        </form>
+      </div>
+
+
+    </div>
+
+    <div class="cart-total">
+      <%
+  // Calculate the total price by iterating over each cart item and applying discounts if available
+  let computedTotal = 0;
+  cart.items.forEach(item => {
+    let unitPrice = item.priceAtPurchase;
+    if (item.item.offer > 0) {
+      // Apply discount: reduce unit price by the offer percentage
+      unitPrice = unitPrice - (unitPrice * item.item.offer / 100);
+    }
+    computedTotal += unitPrice * item.quantity;
+  });
+%>
+      <div class="cart-total">
+        <h3>Total: ₨<%= computedTotal.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 }) %></h3>
+      </div>
+
+    </div>
+
+    <% } else { %>
+    <p style="text-align: center; font-size: 18px; font-weight: bold; margin-top: 20px;">
+      Your cart is empty. <a href="/">Continue shopping</a>
+    </p>
+    <% } %>
+  </div>
+
+
+  <%- include('partials/MobileMenu') %>
+  <%- include('partials/footer') %>
+
+  <script>
+    // Toggle all checkboxes when "Select All" is clicked
+    function toggleAllCheckboxes() {
+      const checkboxes = document.querySelectorAll('input[name="selectedItems"]');
+      const selectAll = document.getElementById('selectAll');
+      checkboxes.forEach((checkbox) => {
+        checkbox.checked = selectAll.checked;
+      });
+    }
+  </script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const payBankRadio = document.getElementById("payBank");
+      const payCODRadio = document.getElementById("payCOD");
+      const bankDetails = document.getElementById("bank-details");
+
+      function toggleBankDetails() {
+        if (payBankRadio.checked) {
+          bankDetails.classList.add("expanded");
+        } else {
+          bankDetails.classList.remove("expanded");
+        }
+      }
+
+      // Initialize on page load:
+      toggleBankDetails();
+
+      // Listen for changes on both radio buttons
+      payBankRadio.addEventListener("change", toggleBankDetails);
+      payCODRadio.addEventListener("change", toggleBankDetails);
+    });
+  </script>
+</body>
+
+</html>

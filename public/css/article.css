@@ -1,0 +1,537 @@
+/* General Section Styling */
+section {
+    margin: 0 auto;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-bottom: 50px;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+}
+
+.section-description {
+    font-size: 1rem;
+    margin-bottom: 40px;
+    text-align: center;
+    color: #666;
+    line-height: 1.6;
+}
+
+/* Products Carousel */
+.products-carousel {
+    position: relative;
+    overflow: hidden;
+}
+
+.products-track {
+    display: flex;
+    transition: transform 0.5s ease;
+    align-items: center;
+    justify-content: center;
+    /* Ensures content stays centered */
+    width: 1050px;
+    /* Ensures the width adjusts dynamically based on the content */
+    margin: 0 auto;
+    /* Centers the track within the carousel */
+}
+
+.product-item {
+    width: 335px;
+    height: auto;
+    text-align: center;
+    border: 1px solid #ddd;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    align-items: center;
+    flex: 0 0 auto;
+    /* Prevents items from shrinking or growing */
+    margin: 0 15px;
+    /* Add spacing between products */
+}
+
+
+.image-wrapper {
+    position: relative;
+    width: 100%;
+    /* Ensure the wrapper spans full width */
+    height: 400px;
+    /* Adjust height based on image proportions */
+    overflow: hidden;
+}
+
+.image-wrapper img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    /* Ensure images cover the full width */
+    height: 100%;
+    /* Maintain aspect ratio or stretch to fit */
+    object-fit: cover;
+    /* Adjust this based on desired image behavior */
+    transition: opacity 0.5s ease;
+    /* Smooth fade animation */
+}
+
+.image-wrapper .secondary-image {
+    opacity: 0;
+    /* Initially hidden */
+    z-index: 1;
+    /* Place it on top when visible */
+}
+
+.image-wrapper:hover .primary-image {
+    opacity: 0;
+    /* Hide primary image on hover */
+}
+
+.image-wrapper:hover .secondary-image {
+    opacity: 1;
+    /* Show secondary image on hover */
+}
+
+.product-item h3 {
+    margin-top: 15px;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+/* Carousel Buttons */
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #fff;
+    border: 1px solid #ddd;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%; /* Makes it circular */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    z-index: 5;
+}
+
+.product-prev-btn {
+    left: 10px;
+}
+
+.product-next-btn {
+    right: 10px;
+}
+
+
+/* Order Section */
+.order-section {
+    margin: 0px auto;
+    text-align: center;
+}
+
+.order-section .section-title {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.order-section .section-description {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.order-section .order-steps {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+    margin-bottom: 30px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.order-section .order-steps li {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 10px;
+    padding-left: 20px;
+    position: relative;
+}
+
+.order-section .order-steps li::before {
+    content: '✓';
+    color: #000000;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+/* Order Form */
+.order-form {
+    max-width: 600px;
+    margin: 0px auto;
+    padding: 20px;
+}
+
+.order-form .form-group {
+    margin-bottom: 20px;
+}
+
+.order-form label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.order-form input,
+.order-form textarea {
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid #000000;
+    font-size: 16px;
+    padding: 10px 0;
+    outline: none;
+    background: transparent;
+    color: black;
+    transition: border-color 0.3s ease;
+}
+
+.order-form textarea {
+    resize: none;
+}
+
+.submit-btn {
+    width: 100%;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-color: #555;
+}
+
+
+/* Slider Container */
+.project-slider {
+    position: relative;
+    width: 100%;
+    /* Full width of parent container */
+    max-width: 1152px;
+    /* Limit width to match your image size */
+    aspect-ratio: 16 / 9;
+    /* Maintain 1280x720 aspect ratio */
+    margin: 0px auto;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    /* Center content vertically */
+    justify-content: center;
+    /* Center content horizontally */
+}
+
+/* Individual Slides */
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    /* Match the width of the container */
+    height: 100%;
+    /* Match the height of the container */
+    opacity: 0;
+    /* Hide by default */
+    transform: translateY(100%);
+    /* Start slide outside view */
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+/* Show the active slide */
+.slide.active {
+    opacity: 1;
+    /* Show the active slide */
+    transform: translateY(0);
+    /* Bring it into view */
+}
+
+/* Images inside the slides */
+.slide img {
+    display: block;
+    /* Ensure images are rendered as block elements */
+    width: 100%;
+    /* Scale images to fit the container */
+    height: 100%;
+    /* Scale proportionally to fill the height */
+    object-fit: cover;
+    /* Ensure the image covers the container without distortion */
+}
+
+/* Active Slide */
+.slide.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Transition for Exiting Slide */
+.slide.exiting {
+    opacity: 0;
+    transform: translateY(-100%);
+}
+
+
+/* Slider Buttons */
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+    z-index: 5;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Adjust Left and Right Buttons */
+.slider-btn.slider-prev-btn {
+    left: 10px;
+    /* Adjust positioning within the container */
+}
+
+.slider-btn.slider-next-btn {
+    right: 10px;
+    /* Adjust positioning within the container */
+}
+
+/* About Us Section */
+.about-us {
+    background-color: #ffffff;
+    padding: 0px 20px;
+}
+
+.about-us .section-title {
+    font-size: 2.8rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.about-us .section-description {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 30px;
+    text-align: justify;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Terms and Conditions Section */
+.terms {
+    background-color: #ffffff;
+    padding: 0px 20px;
+}
+
+.terms .section-title {
+    font-size: 2.8rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.terms .terms-list {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 30px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.terms .terms-list li {
+    margin-bottom: 10px;
+}
+
+
+/* Delivery Section */
+.delivery {
+    background-color: #ffffff;
+    padding: 0px 20px;
+}
+
+.delivery .section-title {
+    font-size: 2.8rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.delivery .section-description {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 30px;
+    text-align: justify;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+
+/* Mobile Optimization */
+@media only screen and (max-width: 768px) {
+
+    /* General Section Styling */
+    .container {
+        max-width: 100%;
+        padding: 20px;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .section-description {
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+
+    /* Terms and Conditions Section */
+    .terms .section-title {
+        font-size: 2rem;
+    }
+
+    .terms .terms-list {
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+
+    /* Delivery Section */
+    .delivery .section-title {
+        font-size: 2rem;
+    }
+
+    .delivery .section-description {
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+
+    /* About Us Section */
+    .about-us .section-title {
+        font-size: 2rem;
+    }
+
+    .about-us .section-description {
+        font-size: 0.9rem;
+        line-height: 1.6;
+    }
+
+    /* Products Carousel */
+    .products-carousel {
+        overflow-x: scroll;
+        /* Enable horizontal scrolling for smaller screens */
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .products-track {
+        flex-wrap: nowrap;
+        width: auto;
+        display: inline-flex;
+    }
+
+    .product-item {
+        width: 250px;
+        margin: 0 10px;
+    }
+
+    .image-wrapper {
+        height: 300px;
+    }
+
+    .image-wrapper img {
+        object-fit: cover;
+    }
+
+    /* Carousel Buttons */
+    .carousel-btn {
+        display: none;
+    }
+
+    /* Order Section */
+    .order-section .order-steps {
+        padding: 0 10px;
+        margin-bottom: 20px;
+    }
+
+    .order-section .order-steps li {
+        font-size: 0.9rem;
+        padding-left: 15px;
+    }
+
+    .order-form {
+        padding: 15px;
+    }
+
+    .order-form input,
+    .order-form textarea {
+        font-size: 14px;
+        padding: 8px 0;
+    }
+
+    .submit-btn {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    /* Project Slider */
+    .project-slider {
+        max-width: 100%;
+        aspect-ratio: 4 / 3;
+        margin: 20px auto;
+    }
+
+    .slide img {
+        object-fit: contain;
+    }
+
+    /* Slider Buttons */
+    .slider-btn {
+        width: 30px;
+        height: 30px;
+    }
+
+    .slider-btn.slider-prev-btn {
+        left: 10%;
+    }
+
+    .slider-btn.slider-next-btn {
+        right: 10%;
+    }
+}

@@ -1,0 +1,198 @@
+/* Footer Container Styling */
+.custom-footer {
+    background-color: white;
+    color: black;
+    padding: 40px 20px;
+    font-family: 'Arial', sans-serif;
+    border-top: 1px solid #e5e5e5;
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Footer Column */
+.footer-column {
+    align-items: center;
+    min-width: 250px;
+    margin-left: 60px;
+}
+
+.footer-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: black;
+}
+
+.footer-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-list li {
+    position: relative;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+/* Link Styling */
+.footer-link {
+    display: inline-block;
+    text-decoration: none;
+    font-size: 14px;
+    color: black;
+    transition: transform 0.3s ease, color 0.3s ease;
+    position: relative;
+}
+
+/* Dash Styling */
+.footer-link::before {
+    content: "-";
+    position: absolute;
+    left: -20px;
+    opacity: 0;
+    transition: left 0.3s ease, opacity 0.3s ease;
+    color: black;
+}
+
+/* Hover Effect */
+.footer-list li:hover .footer-link::before {
+    left: -10px;
+    /* Position the dash closer to the text */
+    opacity: 1;
+    /* Make the dash visible */
+}
+
+.footer-list li:hover .footer-link {
+    transform: translateX(10px);
+    /* Move the text slightly to the right */
+    color: #3a3a3a;
+    /* Optional: Change text color */
+}
+
+/* New Categories List Styling */
+.footer-categories-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    /* Ensures vertical stacking */
+}
+
+.footer-category-item {
+    position: relative;
+    margin-bottom: 10px;
+    overflow: hidden;
+    ;
+}
+
+.footer-category-link {
+    display: inline-block;
+    text-decoration: none;
+    font-size: 14px;
+    color: black;
+    transition: transform 0.3s ease, color 0.3s ease;
+    position: relative;
+}
+
+/* Dash Styling for Category Links */
+.footer-category-link::before {
+    content: "-";
+    position: absolute;
+    left: -20px;
+    opacity: 0;
+    transition: left 0.3s ease, opacity 0.3s ease;
+    color: black;
+}
+
+/* Hover Effect for Category Links */
+.footer-category-item:hover .footer-category-link::before {
+    left: -10px;
+    opacity: 1;
+}
+
+.footer-category-item:hover .footer-category-link {
+    transform: translateX(10px);
+    /* Move the text slightly to the right */
+    color: #3a3a3a;
+    /* Optional: Change text color */
+}
+
+/* Social Media Icons */
+.social-icons {
+    display: flex;
+    gap: 15px;
+}
+
+.social-icon {
+    font-size: 24px;
+    color: black;
+    text-decoration: none;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.social-icon:hover {
+    color: #5a5a5a;
+    transform: scale(1.1);
+}
+
+/* Footer Bottom */
+.footer-bottom {
+    text-align: center;
+    margin-top: 30px;
+    border-top: 1px solid #616161;
+    padding-top: 15px;
+    font-size: 14px;
+    color: #000000;
+}
+
+.footer-bottom p {
+    margin: 0;
+}
+
+.footer-logo {
+    margin-bottom: 50px;
+    text-align: left;
+}
+
+.footer-logo img {
+    width: 100px;
+    /* Adjust size as needed */
+    height: auto;
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-column {
+        flex: 1 1 100%;
+        text-align: center;
+        margin-left: 0px;
+    }
+
+    .social-icons {
+        justify-content: center;
+    }
+
+    .footer-logo {
+        text-align: center;
+    }    
+
+    .footer-logo img {
+        width: 50px;
+        /* Adjust size as needed */
+        height: auto;
+    }
+
+}

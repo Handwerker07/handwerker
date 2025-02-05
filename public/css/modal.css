@@ -1,0 +1,137 @@
+/* Overlay for Modal */
+.modal {
+    display: none;
+    /* Use "flex" when showing the modal via JavaScript */
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.7); /* Dark semi-transparent background */
+    align-items: center;
+    justify-content: center;
+}
+
+/* Modal Content */
+.modal-content {
+    background: #fff;
+    width: 350px;
+    padding: 70px;
+    /* Remove border-radius for square corners */
+    border-radius: 0;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    position: relative;
+    text-align: center;
+    animation: fadeIn 0.4s ease-out;
+}
+
+/* Fade In Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Modal Input Group */
+.modal .input-group {
+    position: relative;
+    margin-bottom: 30px;
+}
+  
+.modal .input-group input {
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid #000000;
+    font-size: 16px;
+    padding: 10px 0;
+    outline: none;
+    background: transparent;
+    color: black;
+    transition: border-color 0.3s ease;
+}
+  
+.modal .input-group input:focus {
+    border-bottom: 2px solid #000;
+}
+  
+.modal .input-group .toggle-password {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #888;
+}
+  
+.modal .input-group .toggle-password:hover {
+    color: #000;
+}
+  
+.modal .input-underline {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: #ddd;
+    transition: background-color 0.3s ease;
+}
+  
+/* Button Styles */
+.modal button {
+    width: 100%;
+    padding: 12px;
+    background: #000;
+    color: #fff;
+    border: none;
+    border-radius: 0; /* Square corners */
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s;
+}
+  
+.modal button:hover {
+    background: #333;
+}
+  
+/* Close Button */
+.close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    color: #666;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+  
+.close:hover {
+    color: #000;
+}
+
+/* Mobile Responsive Adjustments */
+@media only screen and (max-width: 480px) {
+    .modal-content {
+        width: 90%;       /* Use 90% of the viewport width */
+        padding: 30px;    /* Reduce padding for smaller screens */
+    }
+    
+    .modal .input-group input {
+        font-size: 14px;  /* Slightly smaller font */
+    }
+    
+    .modal button {
+        font-size: 14px;  /* Adjust button font size */
+        padding: 10px;    /* Adjust button padding */
+    }
+    
+    .close {
+        font-size: 20px;  /* Adjust close button size */
+        top: 5px;
+        right: 10px;
+    }
+}

@@ -1,0 +1,551 @@
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: 20px;
+}
+
+.product-view {
+    display: flex;
+    gap: 20px;
+}
+
+.image-gallery {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.thumbnails {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-height: 400px;
+    overflow-y: auto;
+    padding-right: 5px;
+    scrollbar-width: thin;
+    scrollbar-color: #a0a0a0 #f0f0f0;
+}
+
+.thumbnail {
+    width: 60px;
+    height: 60px;
+    background-size: cover;
+    background-position: center;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: border-color 0.3s;
+}
+
+.thumbnail:hover,
+.thumbnail.active {
+    border-color: black;
+}
+
+/* Main Image Styles */
+.main-image-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.main-image {
+    width: 400px;
+    height: 400px;
+    background-size: cover;
+    background-position: center;
+    border: 1px solid #ccc;
+}
+
+.zoom-box {
+    width: 490px;
+    height: 490px;
+    background-size: 300%;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: 1px solid #ccc;
+    display: none;
+    overflow: hidden;
+    position: absolute;
+    top: 201px;
+    left: 645px;
+    z-index: 10;
+    background-color: white;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Custom Scrollbar for Thumbnails */
+.thumbnails::-webkit-scrollbar {
+    width: 6px;
+    /* Narrow scrollbar */
+    height: 6px;
+    /* Narrow scrollbar for horizontal */
+}
+
+.thumbnails::-webkit-scrollbar-track {
+    background: #f0f0f0;
+    /* Track color */
+}
+
+.thumbnails::-webkit-scrollbar-thumb {
+    background: #a0a0a0;
+    /* Scrollbar thumb color */
+}
+
+.thumbnails::-webkit-scrollbar-thumb:hover {
+    background: #888888;
+    /* Darker thumb color on hover */
+}
+
+
+.product-info {
+    max-width: 500px;
+    flex: 1;
+    margin-top: 18px;
+    margin-left: 100px;
+}
+
+
+h1 {
+    font-size: 40px;
+    font-weight: bolder;
+    color: black;
+}
+
+p {
+    margin-bottom: 20px;
+    font-weight: bolder;
+    color: rgb(113, 113, 113);
+}
+
+.product-info p {
+    margin-top: 5px;
+}
+
+/* Quantity Box Container */
+.quantity-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+/* Label Styling */
+.quantity-label {
+    font-size: 16px;
+    font-weight: bold;
+    margin-right: 10px;
+    color: #333;
+}
+
+/* Custom Quantity Box */
+.custom-quantity-box {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    width: 100px;
+    height: 50px;
+    position: relative;
+    border: 1px solid #7f7f7f;
+
+}
+
+/* Left Side (Number Box) */
+.quantity-number {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    margin-bottom: 15px;
+}
+
+.quantity-input {
+    width: 100%;
+    text-align: center;
+    border: none;
+    font-size: 18px;
+    font-weight: bold;
+    color: #7f7f7f;
+    background: none;
+    outline: none;
+    pointer-events: none;
+    margin-top: 15px;
+    /* Prevent editing */
+}
+
+/* Right Side (Buttons) */
+.quantity-btn-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #7f7f7f;
+    width: 40px;
+    height: 100%;
+}
+
+.quantity-btn {
+    background-color: white;
+    color: #7f7f7f;
+    font-size: 20px;
+    border: none;
+    width: 100%;
+    height: 50%;
+    cursor: pointer;
+    transition: background-color 0.5s ease;
+}
+
+.quantity-btn:hover {
+    background-color: black;
+    color: white;
+}
+
+.add-to-cart-btn {
+    background-color: #000000;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.add-to-cart-btn:hover {
+    background-color: #3f3f3f;
+}
+
+.price {
+    font-weight: 500;
+}
+
+.original-price {
+    text-decoration: line-through;
+    color: #888;
+    font-size: 1rem;
+}
+
+.discounted-price {
+    color: black;
+    font-size: 28px;
+    font-weight: 500;
+}
+
+.regular-price {
+    color: black;
+    font-size: 28px;
+    font-weight: 500;
+}
+
+/* Product Info */
+.stock-label {
+    display: inline-block;
+    background-color: #f44336;
+    color: white;
+    padding: 10px 20px;
+    font-size: 3rem;
+    font-weight: bold;
+    position: absolute;
+    margin-top: 150px;
+    z-index: 10;
+    transform: rotate(-15deg);
+    text-align: center;
+}
+
+
+/* Markdown Container */
+.markdown-container {
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+}
+
+.markdown-content {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #000;
+}
+
+/* Styling for common markdown elements */
+.markdown-content h1,
+.markdown-content h2,
+.markdown-content h3 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: #45505a;
+    /* Match brand color or a prominent color */
+}
+
+.markdown-content p {
+    margin-bottom: 15px;
+    color: #444;
+}
+
+.markdown-content ul,
+.markdown-content ol {
+    margin-left: 20px;
+    margin-bottom: 15px;
+}
+
+.markdown-content li {
+    margin-bottom: 10px;
+}
+
+.markdown-content a {
+    color: #685f52;
+    /* Link color */
+    text-decoration: underline;
+}
+
+.markdown-content img {
+    max-width: 30%;
+    height: auto;
+    border-radius: 4px;
+}
+
+/* Tabs Container */
+.tabs-container {
+    margin-top: 30px;
+    border: 1px solid #ddd;
+    background: #f9f9f9;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+/* Tab Header */
+.tab-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    padding: 15px;
+    background: #ffffff;
+    border-bottom: 1px solid #ddd;
+    transition: background 0.3s ease;
+}
+
+.tab-header h3 {
+    font-size: 18px;
+    margin: 0;
+    color: #333;
+    font-weight: bold;
+}
+
+.tab-header .toggle-btn {
+    font-size: 24px;
+    font-weight: bold;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #000000;
+    outline: none;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.tab-header .toggle-btn[aria-expanded="true"] {
+    transform: rotate(180deg);
+    color: #9e9e9e;
+    /* Red color when open */
+}
+
+/* Tab Content */
+.tab-content {
+    padding: 0 15px;
+    color: #000;
+    font-size: 16px;
+    line-height: 1.5;
+    background: #fefefe;
+    border-bottom: 1px solid #ddd;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.4s ease;
+}
+
+.tab-content ul {
+    list-style: none;
+    padding: 10px 0;
+}
+
+.tab-content ul li {
+    margin-bottom: 5px;
+}
+
+.tab-content.hidden {
+    max-height: 0;
+    padding: 0 15px 0;
+}
+
+.buttons-container {
+    display: flex;
+    /* Aligns buttons in a row */
+    align-items: center;
+    /* Ensures vertical alignment */
+    gap: 12px;
+    /* Space between buttons */
+}
+
+.add-to-fav-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    color: black;
+    text-decoration: none;
+    position: relative;
+    display: inline-flex;
+    /* Keep text and icon inline */
+    align-items: center;
+    /* Ensure vertical alignment */
+    justify-content: center;
+    /* Center horizontally */
+    gap: 8px;
+    /* Space between text and icon */
+}
+
+.add-to-fav-btn img {
+    width: 36px;
+    /* Adjust size as needed */
+    height: 36px;
+    transition: filter 0.3s ease-in-out;
+}
+
+/* Default state - normal heart (black) */
+.add-to-fav-btn img {
+    filter: grayscale(100%);
+}
+
+/* When active (added to favorites) - fully red heart */
+.add-to-fav-btn.active img {
+    filter: brightness(0) saturate(100%) invert(11%) sepia(97%) saturate(7465%) hue-rotate(355deg) brightness(100%) contrast(103%);
+}
+
+
+/* Responsive styles for mobile */
+@media (max-width: 768px) {
+
+    .zoom-box {
+        display: none !important;
+    }
+
+    .container {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .markdown-container {
+        padding-left: 0px;
+        padding-right: 0px;
+        padding-bottom: 0px;
+    }
+
+    .main-image {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1 / 1;
+        background-size: cover;
+        background-position: center;
+        margin-bottom: 10px;
+    }
+
+    .image-gallery {
+        display: flex;
+    }
+
+    .thumbnails {
+        display: flex;
+    }
+
+    .thumbnail {
+        width: 50px;
+        height: 50px;
+    }
+
+    .product-view {
+        flex-direction: column;
+        /* Stack elements vertically on mobile */
+        gap: 10px;
+        /* Reduce gap on mobile */
+    }
+
+    .product-info {
+        order: 2;
+        /* Ensure the info comes after the image */
+        padding-top: 10px;
+        /* Reduce spacing on smaller screens */
+        margin-top: 10px;
+        max-width: 100%;
+        margin-left: 0px;
+        /* Full width for mobile */
+    }
+
+    h1 {
+        font-size: 30px;
+    }
+
+    .price {
+        font-weight: 500;
+    }
+
+    .original-price {
+        text-decoration: line-through;
+        color: #888;
+        font-size: 0.8rem;
+    }
+
+    .discounted-price {
+        color: black;
+        font-size: 25px;
+    }
+
+    .regular-price {
+        color: black;
+        font-size: 25px;
+    }
+
+    .quantity {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-top: 10px;
+    }
+
+    .quantity input {
+        margin-bottom: 10px;
+        width: 100%;
+        /* Full width for input on mobile */
+    }
+
+    .add-to-cart-btn {
+        width: 120px;
+        /* Make the button full width on mobile */
+        padding: 15px;
+    }
+
+    .markdown-container {
+        padding: 15px;
+    }
+
+    .markdown-content {
+        font-size: 0.95rem;
+    }
+
+    .image-gallery {
+        flex-direction: column;
+        /* Stack thumbnails below the main image */
+    }
+
+    .thumbnails {
+        max-height: unset;
+        /* Remove height restriction for horizontal layout */
+        max-width: 100%;
+        /* Full-width thumbnails */
+        flex-direction: row;
+        /* Switch to horizontal layout */
+        overflow-x: auto;
+        /* Enable horizontal scrolling */
+        overflow-y: hidden;
+        /* Disable vertical scrolling */
+        gap: 5px;
+        /* Smaller gap for mobile */
+        justify-content: center;
+        /* Center thumbnails below the main image */
+    }
+}

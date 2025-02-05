@@ -1,0 +1,450 @@
+body,
+ul,
+li,
+a {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Top Mini Bar Styling */
+.top-bar {
+    background-color: rgb(60, 60, 60);
+    padding: 8px 38px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.top-nav a {
+    margin-left: 15px;
+    font-size: 18px;
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.top-nav a:hover {
+    color: #9a9a9a;
+}
+
+/* Main Header Styling */
+.main-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: white;
+    padding: 0px 143px;
+    padding-top: 25px;
+}
+
+/* Categories Bar (Full Width) */
+.categories-bar {
+    background-color: white;
+    padding: 20px 0;
+    position: relative;
+    z-index: 10;
+}
+
+.categories-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: 22px;
+}
+
+.category-item {
+    position: relative;
+}
+
+.category-link {
+    text-decoration: none;
+    font-size: 14px;
+    color: #000;
+    font-weight: bold;
+    padding: 5px 10px;
+    transition: color 0.3s ease-in-out;
+    text-transform: uppercase;
+    position: relative;
+}
+
+.category-link::after {
+    font-size: 12px;
+    content: "\f107";
+    font-family: "FontAwesome";
+    border: 0;
+    width: auto;
+    height: auto;
+    vertical-align: 1px;
+    font-weight: 400;
+}
+
+.explore-more-link {
+    text-decoration: none;
+    font-size: 14px;
+    color: #000;
+    font-weight: bold;
+    padding: 5px 10px;
+    transition: color 0.3s ease-in-out;
+    text-transform: uppercase;
+    position: relative;
+}
+
+.category-link:hover::after {
+    color: #5e5e5e;
+}
+
+/* Dropdown Menu for Subcategories */
+.subcategory-dropdown {
+    visibility: hidden;
+    /* Hidden by default */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    min-width: 200px;
+    padding: 35px 25px;
+    z-index: 100;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+}
+
+/* Show Dropdown on Hover */
+.category-item:hover .subcategory-dropdown {
+    visibility: visible;
+    /* Make it visible */
+    opacity: 1;
+    /* Fully visible */
+    transform: translateY(0);
+    /* Move to its original position */
+}
+
+/* Dropdown Menu List */
+.subcategory-dropdown ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Subcategory Item Styling */
+.subcategory-dropdown li {
+    position: relative;
+    padding: 8px 15px;
+    overflow: hidden;
+}
+
+/* Subcategory Link Styling */
+.subcategory-dropdown li a {
+    display: inline-block;
+    text-decoration: none;
+    font-size: 14px;
+    color: #5e5e5e;
+    transition: transform 0.3s ease, color 0.3s ease;
+    /* Smooth text movement and color change */
+    position: relative;
+}
+
+/* Dash Styling */
+.subcategory-dropdown li a::before {
+    content: "-";
+    position: absolute;
+    left: -20px;
+    opacity: 0;
+    transition: left 0.3s ease, opacity 0.3s ease;
+    color: #5e5e5e;
+}
+
+/* Hover Effect */
+.subcategory-dropdown li:hover a::before {
+    left: -10px;
+    /* Position the dash next to the text */
+    opacity: 1;
+    /* Make dash visible */
+}
+
+.subcategory-dropdown li:hover a {
+    transform: translateX(10px);
+    /* Move text slightly to the right */
+    color: #000;
+    /* Optional: Change text color */
+}
+
+/* Subcategory Dropdown Title Styling */
+.subcategory-dropdown-title {
+    display: inline-block;
+    text-decoration: none;
+    font-size: 16px;
+    /* Slightly larger than subcategory links */
+    color: #000;
+    font-weight: bold;
+    /* Make it bold for emphasis */
+    text-transform: uppercase;
+    /* Optional: Make it all uppercase */
+    position: relative;
+    /* For underline styling */
+    margin-bottom: 10px;
+    /* Space below the title */
+    transition: transform 0.3s ease, color 0.3s ease;
+    /* Smooth hover animations */
+}
+
+/* Underline Styling */
+.subcategory-dropdown-title::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    /* Position underline slightly below the text */
+    width: 12px;
+    height: 0.8px;
+    background-color: #5e5e5e;
+    /* Start animation from the left */
+    margin-left: 2px;
+}
+
+/* Logo Styling */
+.logo {
+    flex: 1;
+    text-align: left;
+}
+
+.typo-logo {
+    height: 60px;
+    width: auto;
+}
+
+/* Search Bar Container */
+.search-bar {
+    flex: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 8px;
+}
+
+/* Form Styling */
+.search-bar form {
+    display: flex;
+    width: 100%;
+    max-width: 400px;
+    position: relative;
+}
+
+/* Input Field Styling */
+.search-bar input {
+    width: 100%;
+    padding: 15px 15px 10px 0;
+    font-size: 16px;
+    border: none;
+    border-bottom: 2px solid black;
+    outline: none;
+    background: transparent;
+    color: #333;
+    font-family: "Arial", sans-serif;
+    transition: border-color 0.3s ease;
+}
+
+/* Input Field Focus Effect */
+.search-bar input:focus {
+    border-bottom: 2px solid #000000;
+}
+
+/* Placeholder Styling */
+.search-bar input::placeholder {
+    color: #6b6b6b;
+    font-size: 18px;
+    font-family: CustomFont;
+}
+
+/* Search Icon Styling */
+.search-bar button {
+    position: absolute;
+    right: 0;
+    top: 42%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+    color: black;
+    outline: none;
+    transition: color 0.3s ease;
+}
+
+.close-btn {
+    position: absolute;
+    right: 70px;
+    font-size: 24px;
+    cursor: pointer;
+    color: white;
+}
+
+/* Logo Styling */
+.shop-cart {
+    display: block;
+    font-size: 30px;
+    margin-right: 500px;
+}
+
+/* Icons Section */
+.top-icons {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+}
+
+.top-icons a {
+    color: #000;
+    font-size: 18px;
+    text-decoration: none;
+}
+
+/* Profile Menu Container */
+.profile-menu {
+    position: relative;
+}
+
+/* Dropdown Menu Styling */
+.profile-menu .dropdown-menu {
+    visibility: hidden;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #fff;
+    min-width: 100px;
+    padding: 16px 8px;
+    z-index: 11;
+    border: 1px solid #ddd;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+}
+
+/* Show Dropdown on Hover */
+.profile-menu:hover .dropdown-menu {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Dropdown Menu List */
+.profile-menu .dropdown-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Dropdown Menu List Item */
+.profile-menu .dropdown-menu li {
+    position: relative;
+    padding: 8px 15px;
+    overflow: hidden;
+}
+
+/* Dropdown Links */
+.profile-menu .dropdown-menu li a {
+    display: inline-block;
+    text-decoration: none;
+    font-size: 14px;
+    color: #5e5e5e;
+    transition: transform 0.3s ease, color 0.3s ease;
+    position: relative;
+}
+
+/* Dash Before Link */
+.profile-menu .dropdown-menu li a::before {
+    content: "-";
+    position: absolute;
+    left: -20px;
+    opacity: 0;
+    transition: left 0.3s ease, opacity 0.3s ease;
+    color: #5e5e5e;
+}
+
+/* Hover Effect */
+.profile-menu .dropdown-menu li:hover a::before {
+    left: -10px;
+    opacity: 1;
+}
+
+.profile-menu .dropdown-menu li:hover a {
+    transform: translateX(10px);
+    color: #000;
+}
+
+/* Title Styling (Optional for Section Titles) */
+.profile-menu .dropdown-menu-title {
+    display: inline-block;
+    text-decoration: none;
+    font-size: 16px;
+    color: #000;
+    font-weight: bold;
+    text-transform: uppercase;
+    position: relative;
+    margin-bottom: 10px;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.profile-menu .dropdown-menu-title::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    width: 12px;
+    height: 0.8px;
+    background-color: #5e5e5e;
+    margin-left: 2px;
+}
+
+
+/* Heart Icon Redirect */
+.heart-icon a {
+    position: relative;
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+    .main-header {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* Logo Centered for Mobile */
+    .typo-logo {
+        text-align: center;
+        margin-bottom: 10px;
+        height: 55px;
+        width: auto;
+        max-height: 80px;
+    }
+
+    /* Search Bar Bottom Left */
+    .search-bar {
+        flex-direction: row;
+        justify-content: flex-start;
+        margin-bottom: 8px;
+    }
+
+    .search-bar input {
+        width: 300px;
+    }
+
+    /* Icons on the Right */
+    .top-icons {
+        display: none;
+    }
+
+    .shop-cart {
+        display: none;
+    }
+
+    .categories-bar {
+        display: none;
+    }
+}

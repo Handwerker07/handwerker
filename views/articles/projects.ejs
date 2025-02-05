@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Article | Projects</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/article.css">
+  <link rel="stylesheet" href="/css/fonts.css">
+
+  <!-- Favicons -->
+  <link rel="apple-touch-icon" sizes="57x57" href="/favicons/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/favicons/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/favicons/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/favicons/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/favicons/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/favicons/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/favicons/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/favicons/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicons/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicons/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+  <link rel="manifest" href="/favicons/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/favicons/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+</head>
+
+<body>
+  <%- include('../partials/header') %>
+
+  <!-- Products Section -->
+  <section class="products-section">
+    <div class="container">
+      <h2 class="section-title">Products</h2>
+      <p class="section-description">
+        Experience handcrafted furniture designed and built in our workshop, delivered straight to your door in Mauritius. Explore our collection and bring unique, Australian-made pieces to your island home.
+      </p>
+      <div class="products-carousel">
+        <button class="slider-btn slider-prev-btn" aria-label="Previous Slide">&lt;</button>
+        <div class="products-track">
+          <div class="product-item">
+            <div class="image-wrapper">
+              <img src="/products/p1.jpg" alt="Product 1" class="primary-image">
+              <img src="/products/s1.jpg" alt="Secondary Product 1" class="secondary-image">
+            </div>
+            <h3>Custom Dining Table</h3>
+          </div>
+          <div class="product-item">
+            <div class="image-wrapper">
+              <img src="/products/p2.jpg" alt="Product 2" class="primary-image">
+              <img src="/products/s2.jpg" alt="Secondary Product 2" class="secondary-image">
+            </div>
+            <h3>Handcrafted Chair</h3>
+          </div>
+          <div class="product-item">
+            <div class="image-wrapper">
+              <img src="/products/p3.jpg" alt="Product 3" class="primary-image">
+              <img src="/products/s3.jpg" alt="Secondary Product 3" class="secondary-image">
+            </div>
+            <h3>Elegant Bookshelf</h3>
+          </div>
+        </div>
+        <button class="slider-btn slider-next-btn" aria-label="Next Slide">&gt;</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="projects-section">
+    <div class="container">
+      <h2 class="section-title">Projects</h2>
+      <p class="section-description">
+        See our products come to life in Cantilever Projects. Expressing diversity of aesthetic and application, our portfolio is layered with individuality.
+      </p>
+      <div class="project-slider">
+        <button class="slider-btn slider-prev-btn" aria-label="Previous Slide">❮</button>
+        <div class="slide active"><img src="/projects/1.jpg" alt="Project 1"></div>
+        <div class="slide"><img src="/projects/2.jpg" alt="Project 2"></div>
+        <div class="slide"><img src="/projects/3.jpg" alt="Project 3"></div>
+        <div class="slide"><img src="/projects/4.jpg" alt="Project 4"></div>
+        <button class="slider-btn slider-next-btn" aria-label="Next Slide">❯</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- How to Order Section -->
+  <section class="order-section">
+    <div class="container">
+      <h2 class="section-title">How to Order</h2>
+      <p class="section-description">
+        Ordering custom furniture is easy! Follow these steps:
+      </p>
+      <ul class="order-steps">
+        <li>1. Fill out the form below with your details and requirements.</li>
+        <li>2. We’ll get in touch to confirm your order and discuss customizations.</li>
+        <li>3. Once finalized, we’ll begin crafting your unique furniture or provide the requested service!</li>
+      </ul>
+      <p class="section-description">Fill out the form below to get started:</p>
+      <form class="order-form" action="/api/submit-order" method="POST">
+        <div class="form-group">
+          <input type="text" id="firstname" name="firstname" placeholder="Your First Name" required>
+        </div>
+        <div class="form-group">
+          <input type="text" id="lastname" name="lastname" placeholder="Your Last Name" required>
+        </div>
+        <div class="form-group">
+          <input type="tel" id="phonenumber" name="phonenumber" value="+230" placeholder="Your Phone Number" required>
+        </div>
+        <div class="form-group" style="display: none;">
+          <input type="text" id="type" name="type" value="Custom-Furniture" required>
+        </div>
+        <div class="form-group" style="display: none;">
+          <input type="text" id="subject" name="subject" value="Custom Furniture Order inquiry" required>
+        </div>
+        <div class="form-group">
+          <input type="email" id="email" name="email" placeholder="Your Email" required>
+        </div>
+        <div class="form-group">
+          <textarea id="message" name="message" rows="12" placeholder="Tell us about the furniture or service you need..." required></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Submit</button>
+      </form>
+    </div>
+  </section>
+
+  <%- include('../partials/MobileMenu') %>
+  <%- include('../partials/footer') %>
+
+  <script>
+    // Product Carousel
+    const productTrack = document.querySelector('.products-track');
+    const productPrevBtn = document.querySelector('.product-prev-btn');
+    const productNextBtn = document.querySelector('.product-next-btn');
+    let productIndex = 0;
+
+    const updateProductCarousel = (direction) => {
+      const items = document.querySelectorAll('.product-item');
+      const itemWidth = items[0].getBoundingClientRect().width;
+      const maxIndex = items.length - Math.floor(productTrack.offsetWidth / itemWidth);
+
+      if (direction === 'next') {
+        productIndex = productIndex < maxIndex ? productIndex + 1 : 0;
+      } else {
+        productIndex = productIndex > 0 ? productIndex - 1 : maxIndex;
+      }
+
+      productTrack.style.transform = `translateX(-${productIndex * itemWidth}px)`;
+    };
+
+    productNextBtn.addEventListener('click', () => updateProductCarousel('next'));
+    productPrevBtn.addEventListener('click', () => updateProductCarousel('prev'));
+
+    // Auto-slide for Product Carousel
+    setInterval(() => updateProductCarousel('next'), 5000);
+
+    // Project Slider
+    const slides = document.querySelectorAll('.slide');
+    const sliderPrevBtn = document.querySelector('.slider-prev-btn');
+    const sliderNextBtn = document.querySelector('.slider-next-btn');
+    let currentSlideIndex = 0;
+
+    const updateSlider = (direction) => {
+      slides[currentSlideIndex].classList.remove('active');
+      if (direction === 'next') {
+        currentSlideIndex = (currentSlideIndex + 1) % slides.length;
+      } else {
+        currentSlideIndex = (currentSlideIndex - 1 + slides.length) % slides.length;
+      }
+      slides[currentSlideIndex].classList.add('active');
+    };
+
+    sliderNextBtn.addEventListener('click', () => updateSlider('next'));
+    sliderPrevBtn.addEventListener('click', () => updateSlider('prev'));
+
+    // Auto-slide for Project Slider
+    setInterval(() => updateSlider('next'), 10000);
+  </script>
+</body>
+
+</html>

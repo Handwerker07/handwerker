@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us | The Handwerker</title>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f8f8f8;
+      margin: 0;
+      padding: 0;
+    }
+
+    .contact-container {
+      display: flex;
+      max-width: 1200px;
+      margin: 0px auto;
+      background: white;
+      padding: 20px;
+    }
+
+    .contact-info {
+      flex: 1;
+      padding: 20px;
+    }
+
+    .contact-info h2 {
+      font-size: 22px;
+      margin-bottom: 15px;
+    }
+
+    /* Style for the icon + text alignment */
+    .info-item {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      margin-bottom: 30px;
+    }
+
+    .info-item i {
+      font-size: 18px;
+      color: #858585;
+      width: 25px;
+      text-align: center;
+    }
+
+    .info-item span {
+      font-size: 16px;
+      color: #333;
+      text-decoration: none;
+    }
+
+    .contact-form {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .contact-form h2 {
+      font-size: 22px;
+      margin-bottom: 15px;
+    }
+
+    /* Form fields */
+    .contact-form label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .contact-form input,
+    .contact-form select,
+    .contact-form textarea {
+      width: 500px;
+      border: none;
+      border-bottom: 2px solid #000000;
+      font-size: 16px;
+      padding: 10px 0;
+      outline: none;
+      background: transparent;
+      color: black;
+      transition: border-color 0.3s ease;
+      margin-bottom: 20px;
+    }
+
+    .contact-form textarea {
+      resize: none;
+    }
+
+    /* Button styles */
+    .contact-form button {
+      width: 100%;
+      background-color: #000;
+      color: #fff;
+      border: none;
+      padding: 12px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      text-transform: uppercase;
+      transition: background-color 0.3s ease;
+    }
+
+    .contact-form button:hover {
+      background-color: #555;
+    }
+
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .contact-container {
+        flex-direction: column;
+      }
+
+      .contact-form input,
+      .contact-form select,
+      .contact-form textarea {
+        width: 300px;
+        border: none;
+        border-bottom: 2px solid #000000;
+        font-size: 16px;
+        padding: 10px 0;
+        outline: none;
+        background: transparent;
+        color: black;
+        transition: border-color 0.3s ease;
+        margin-bottom: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <%- include('../partials/header') %>
+
+  <div class="contact-container">
+    <!-- Left Side: Contact Info -->
+    <div class="contact-info">
+      <h2>Store Information</h2>
+
+      <div class="info-item">
+        <i class="fas fa-map-marker-alt" style="margin-left: 3px; margin-right: 2px;"></i>
+        <span>Maison Sibotie, L'Anse Courtois, Roshan Rd, Pailles, Port Louis</span>
+      </div>
+
+      <div class="info-item">
+        <i class="fas fa-phone-alt"></i>
+        <span><a href="tel:+23059819835">+230 5981 9835</a></span>
+      </div>
+
+      <div class="info-item">
+        <i class="fas fa-envelope"></i>
+        <span><a href="mailto:thehandwerkerfurniture@gmail.com">thehandwerkerfurniture@gmail.com</a></span>
+      </div>
+
+      <div class="info-item">
+        <i class="fas fa-clock" style="margin-left: 2px; margin-right: 1px;"></i>
+        <span><strong>Opening Hours:</strong> Sunday: Closed | Mon-Sat: 9h - 17h</span>
+      </div>
+    </div>
+
+    <!-- Right Side: Contact Form -->
+    <div class="contact-form">
+      <h2>Contact Us</h2>
+      <form action="/api/submit-order" method="POST">
+        <div>
+          <input type="text" id="firstname" name="firstname" placeholder="First Name" required>
+        </div>
+        <div>
+          <input type="text" id="lastname" name="lastname" placeholder="Last Name" required>
+        </div>
+        <div>
+          <input type="email" id="email" name="email" placeholder="Email Address" required>
+        </div>
+        <div style="display: none;">
+          <input type="text" id="type" name="type" value="Contact-Us" required>
+        </div>
+        <div style="display: none;">
+          <input type="text" id="subject" name="subject" value="Customer Service" required>
+        </div>
+        <div>
+          <textarea id="message" name="message" rows="4" placeholder="Write a message for us, depending on your subject" required></textarea>
+        </div>
+        <!-- <div>
+          <label for="attachment">Attachment (optional)</label>
+          <input type="file" id="attachment" name="attachment">
+        </div> -->
+        <div>
+          <button type="submit">Send</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <%- include('../partials/MobileMenu') %>
+  <%- include('../partials/footer') %>
+</body>
+
+</html>

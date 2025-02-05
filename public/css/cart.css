@@ -1,0 +1,349 @@
+/* Global Styles */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 24px;
+    color: #333;
+}
+
+/* Cart Container */
+.cart-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+}
+
+/* Cart Content for Flex Layout (Desktop View) */
+.cart-content {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+    /* Allow wrapping to avoid horizontal overflow */
+}
+
+/* Cart Items (Left Column) */
+.cart-items {
+    flex: 3;
+    width: 100%;
+}
+
+/* Cart Table */
+.cart-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.cart-table th,
+.cart-table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #eaeaea;
+}
+
+.cart-table th {
+    background-color: #f9f9f9;
+    color: #555;
+}
+
+/* Cart Item Styles */
+.cart-item {
+    display: flex;
+    align-items: center;
+}
+
+.cart-item-img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.cart-item-details {
+    font-size: 14px;
+    color: #333;
+}
+
+/* Limit Product Name */
+.cart-item-details h3 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 200px;
+}
+
+.product-link {
+    color: black;
+    text-decoration: none;
+}
+
+/* Trash Icon for Remove Button */
+.remove-btn {
+    background: none;
+    border: none;
+    color: #ff4d4d;
+    font-size: 18px;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.remove-btn:hover {
+    color: #e04444;
+}
+
+/* Cart Total Section */
+.cart-total {
+    text-align: right;
+    font-size: 16px;
+    color: #000;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+/* Checkout Section */
+.checkout-section {
+    width: 100%;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    flex: 1;
+}
+
+/* Section Heading */
+.checkout-section h3 {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #000;
+    text-align: center;
+}
+
+/* Input Label */
+.checkout-section label {
+    display: block;
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+/* Input Fields */
+.checkout-section input {
+    width: 93.5%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: none;
+    border-bottom: 2px solid #000;
+    outline: none;
+    font-size: 14px;
+    color: #000;
+    background: transparent;
+    transition: border-color 0.3s ease;
+}
+
+.checkout-section input:focus {
+    border-bottom: 2px solid #555;
+}
+
+/* Checkout Button */
+.checkout-btn {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.checkout-btn:hover {
+    background-color: #555;
+}
+
+/* Select All & Remove Selected Button */
+.select-all-container {
+    display: flex;
+    justify-content: space-between;
+    /* Align items to opposite ends */
+    align-items: center;
+    /* Center vertically */
+    margin-bottom: 15px;
+    /* Space below the container */
+}
+
+.select-all-options {
+    display: flex;
+    /* Keep checkbox and label in line */
+    align-items: center;
+    /* Center checkbox and label vertically */
+}
+
+.select-all-options input {
+    margin-right: 5px;
+    /* Space between checkbox and label */
+}
+
+.select-all-options label {
+    margin-left: 8px;
+    /* Space between checkbox and label */
+    margin-right: 15px;
+    /* Space between label and button */
+    font-size: 14px;
+    color: #333;
+}
+
+.remove-selected-btn {
+    background-color: #ff4d4d;
+    color: #fff;
+    padding: 8px;
+    /* Adjusted padding to fit icon only */
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    /* Ensures button contents are aligned correctly */
+    align-items: center;
+    /* Align icon vertically */
+}
+
+.remove-selected-btn i {
+    font-size: 18px;
+    /* Size of the trash icon */
+}
+
+.remove-selected-btn:hover {
+    background-color: #e04444;
+}
+
+
+.out-of-stock-label {
+    color: #ff4d4d;
+    font-size: 12px;
+}
+
+/* Payment Method Container */
+.payment-method {
+    margin: 15px 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    /* Aligns items to the left */
+    gap: 20px;
+    /* Adjusts the space between payment options */
+}
+
+/* Style for Payment Method Radio Buttons */
+.payment-method input[type="radio"] {
+    cursor: pointer;
+    accent-color: black;
+    /* Modern browsers: sets the tick/check color to pure black */
+}
+
+/* Style for Payment Method Labels */
+.payment-method label {
+    margin-bottom: 16px;
+    font-size: 11px;
+    color: #000;
+    cursor: pointer;
+    white-space: nowrap;
+    margin-right: 25px;
+}
+
+/* Bank Payment Details Text */
+#bank-details p {
+    margin: 8px 0;
+    font-size: 14px;
+    color: #333;
+}
+
+/* Bank Transaction ID Input */
+#bank-details input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-top: 10px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+/* Smooth Expand/Collapse for Bank Details */
+#bank-details {
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+/* When expanded, give it a large enough max-height and full opacity */
+#bank-details.expanded {
+    max-height: 300px;
+    /* Adjust this value as needed */
+    opacity: 1;
+}
+
+
+/* Responsive Design for Mobile */
+@media (max-width: 768px) {
+
+    /* Stack the items and checkout section vertically */
+    .cart-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        /* Center the checkout section horizontally */
+        padding: 0 10px;
+        /* Add padding to prevent overflow */
+    }
+
+    /* Cart Items will take full width */
+    .cart-items {
+        margin-right: 0;
+        width: 100%;
+        /* Ensure full width for the cart items */
+    }
+
+    /* Checkout Section will move below the cart items and be centered */
+    .checkout-section {
+        margin: 20px 0;
+        /* Add vertical margin */
+        width: 88%;
+        padding: 20px;
+    }
+
+    /* Remove table layout on mobile */
+    .cart-table {
+        display: block;
+        /* Make the table block for mobile */
+        overflow-x: auto;
+        /* Allow scrolling for larger content */
+        white-space: nowrap;
+        /* Prevent table from shrinking */
+    }
+
+    .cart-table th,
+    .cart-table td {
+        display: inline-block;
+        width: auto;
+        padding: 10px 5px;
+    }
+
+    /* Center Align the Checkout Button */
+    .checkout-btn {
+        display: block;
+        margin: 0 auto;
+    }
+}

@@ -1,0 +1,533 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+/* General Carousel Styling */
+.carousel-banner {
+    max-width: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+}
+
+.carousel-slide {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-item {
+    min-width: 100%;
+    position: relative;
+}
+
+.carousel-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(145deg, rgba(0, 0, 0, 0.5), rgba(50, 50, 50, 0.5));
+    color: white;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 20;
+    opacity: 0.8;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.carousel-arrow:hover {
+    opacity: 1;
+    /* Fully opaque on hover */
+    transform: translateY(-50%) scale(1.1);
+    /* Slightly larger on hover */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+    /* Enhanced shadow on hover */
+}
+
+/* Left Arrow */
+.carousel-arrow.left {
+    left: 20px;
+    /* Position to the left */
+}
+
+/* Right Arrow */
+.carousel-arrow.right {
+    right: 20px;
+    /* Position to the right */
+}
+
+/* Adjust Arrow Icon */
+.carousel-arrow i {
+    font-size: 1.5rem;
+    /* Larger arrow icons */
+}
+
+/* New Arrival Section */
+.new-arrival-section {
+    text-align: center;
+    padding: 40px 0;
+    max-width: 100%;
+    margin: 0 auto;
+    background-color: #ffffff;
+}
+
+.new-arrival-section h2 {
+    font-size: 2rem;
+}
+
+.new-arrival-grid {
+    display: flex;
+    justify-content: center;
+}
+
+.new-arrival-card {
+    position: relative;
+    width: 420px;
+    height: 420px;
+    overflow: hidden;
+}
+
+.new-arrival-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.new-arrival-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.5));
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    /* Move content to the top */
+    align-items: flex-start;
+    padding: 15px 20px;
+    /* Slight padding for spacing */
+    color: #ffffff;
+    gap: 10px;
+    /* Spacing between title and button */
+}
+
+.new-arrival-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.new-arrival-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.248);
+    /* White with reduced opacity */
+    color: white;
+    /* Solid white text */
+    font-size: 1rem;
+    padding: 8px 16px;
+    border-radius: 2px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    margin-bottom: 40px;
+}
+
+.new-arrival-button:hover {
+    background-color: #000;
+}
+
+.new-arrival-button span {
+    margin-right: 8px;
+    font-size: 1.2rem;
+}
+
+/* General Section Styling */
+.shop-by-category-section {
+    background-color: white;
+    text-align: center;
+    width: auto;
+    margin: 0 auto;
+    padding-top: 20px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 25px;
+}
+
+/* Tabs */
+.category-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.category-tabs .tab {
+    text-decoration: none;
+    font-size: 1rem;
+    color: rgb(120, 120, 120);
+    font-weight: bold;
+    position: relative;
+    /* For pseudo-element positioning */
+    padding-bottom: 5px;
+    /* Space for underline */
+    transition: color 0.4s ease;
+    /* Smooth text color transition */
+}
+
+.category-tabs .tab.active {
+    color: black;
+    /* Change text color for active tabs */
+}
+
+/* Underline Animation */
+.category-tabs .tab::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    /* Initial state: no underline */
+    background-color: black;
+    transition: transform 0.4s ease, width 0.4s ease;
+    /* Smooth expand/collapse animation */
+    transform-origin: left;
+    /* Expand from left to right by default */
+    height: 1px;
+}
+
+.category-tabs .tab.active::after {
+    width: 100%;
+    /* Expand underline to full width */
+    transform-origin: left;
+    /* Expand from left to right */
+}
+
+.category-tabs .tab:not(.active)::after {
+    transform-origin: right;
+    /* Collapse underline from right to left */
+    width: 0;
+    /* Collapse back to zero width */
+}
+
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+    padding: 0;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+.category-name h4 {
+    text-align: left;
+}
+
+@media (min-width: 768px) {
+    .category-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .category-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* Top Selling Section */
+.top-selling-section {
+    background-color: white;
+    text-align: center;
+    width: auto;
+    margin: 0 auto;
+    padding-top: 20px;
+}
+
+/* Mobile container for horizontal scroll */
+.top-selling-container {
+    overflow-x: auto;
+    display: flex;
+    scroll-snap-type: x mandatory;
+    gap: 10px;
+}
+
+.top-selling-section h2 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.top-selling-section p {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+/* Grid Layout for Top-Selling Items */
+.top-selling-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+    padding: 0;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+/* Offer Badge */
+.offer-badge {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    /* Moved from left to right */
+    background-color: #f44336;
+    color: white;
+    font-size: 0.9rem;
+    font-weight: bold;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 2;
+}
+
+/* Card Styling */
+.top-selling-card {
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    /* Keeps the images contained */
+}
+
+/* Image Styling */
+.top-selling-image {
+    width: 100%;
+    display: block;
+    transition: opacity 0.5s ease-in-out;
+    /* Smooth fade effect */
+    /* Smooth fade effect */
+    aspect-ratio: 1/1.3;
+    object-fit: cover;
+}
+
+.top-selling-image.secondary {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.top-selling-card:hover .top-selling-image.secondary {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.top-selling-card:hover .top-selling-image.primary {
+    opacity: 0;
+}
+
+
+
+/* Card Info Styling */
+.top-selling-info {
+    padding: 15px;
+    text-align: left;
+    width: 100%;
+}
+
+.top-selling-info h4 {
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-align: left;
+    white-space: nowrap;
+    /* Prevent wrapping to the next line */
+    overflow: hidden;
+    /* Hide overflow content */
+    text-overflow: ellipsis;
+    /* Add ellipsis if the text overflows */
+    margin: 0;
+    width: 100%;
+    /* Ensure it fits within the card's width */
+}
+
+.top-selling-info p {
+    margin: 0;
+    font-size: 1rem;
+    color: #555;
+    font-weight: 500;
+    margin-top: 3px;
+}
+
+.offer-price {
+    color: #f44336;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+/* Button Styling */
+.view-details-button {
+    display: block;
+    margin-top: 7px;
+    padding: 10px 30px;
+    text-align: center;
+    background-color: #ffffff;
+    color: black;
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-decoration: none;
+    position: relative;
+    /* Required for pseudo-element positioning */
+    overflow: hidden;
+    /* Prevent pseudo-element overflow */
+    transition: color 0.3s ease;
+    /* Smooth text color change */
+}
+
+.view-details-button::after {
+    content: '';
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    height: 2px;
+    background-color: black;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+    width: 30%;
+    margin-top: 5px;
+}
+
+.view-details-button:hover::after {
+    width: 53%;
+}
+
+.view-details-button:hover {
+    color: #555;
+}
+
+.loading-text {
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    color: #555;
+    padding: 20px;
+}
+
+/* Responsive layout */
+@media (max-width: 768px) {
+    .carousel-banner {
+        height: auto;
+        /* Adjust height for smaller screens */
+    }
+
+    .carousel-arrow {
+        width: 40px;
+        height: 40px;
+    }
+
+    .carousel-arrow i {
+        font-size: 1.2rem;
+        /* Adjust icon size for smaller screens */
+    }
+
+    .new-arrival-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        /* Two items per row */
+    }
+
+    .new-arrival-card {
+        width: 100%;
+        height: 100%;
+    }
+
+    .new-arrival-title {
+        font-size: 1.2rem;
+        /* Adjust font size for mobile */
+    }
+
+    .new-arrival-button {
+        font-size: 0.9rem;
+        /* Adjust button size for mobile */
+        padding: 6px 12px;
+        /* Smaller padding for mobile */
+    }
+
+    /* General Section Styling */
+    .shop-by-category-section {
+        padding: 10px;
+    }
+
+    .category-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Tabs */
+    .category-tabs {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .category-tabs .tab {
+        padding: 8px 15px;
+        font-size: 0.9rem;
+    }
+
+
+    .left-arrow {
+        left: 5px;
+        display: none;
+    }
+
+    .right-arrow {
+        right: 5px;
+        display: none;
+
+    }
+
+    .top-selling-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .top-selling-section h2 {
+        font-size: 1.5rem;
+    }
+
+    .top-selling-section h4 {
+        font-size: 1rem;
+    }
+
+    .top-selling-section p {
+        font-size: 0.9rem;
+    }
+
+    .view-details-button {
+        font-size: 0.8rem;
+    }
+}

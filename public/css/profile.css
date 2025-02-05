@@ -1,0 +1,112 @@
+/* General Layout */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+/* Profile Container */
+.profile-container {
+    display: flex;
+    max-width: 1200px;
+    margin: 0 auto;
+    background: white;
+    overflow: hidden;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 80px;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 25%;
+    color: black;
+}
+
+.sidebar .tabs {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar .tabs li {
+    margin: 15px 0;
+}
+
+.sidebar .tabs a {
+    text-decoration: none;
+    color: black;
+    font-size: 16px;
+    display: block;
+    padding: 8px 15px;
+    transition: background-color 0.3s ease, transform 0.2s;
+    width: 200px;
+    border: solid 1px rgb(201, 201, 201);
+}
+
+.sidebar .tabs a.active,
+.sidebar .tabs a:hover {
+    background-color: black;
+    transform: translateX(5px);
+    color: white;
+}
+
+/* Main Content */
+.main-content {
+    width: 100%;
+    background-color: #fff;
+}
+
+.main-content .content {
+    padding: 20px;
+    background: #fff;
+}
+
+.main-content h2 {
+    margin-top: 0;
+    color: #333;
+    font-size: 24px;
+}
+
+.main-content ul {
+    list-style: none;
+    padding: 0;
+}
+
+.main-content ul li {
+    margin: 10px 0;
+    padding: 10px;
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .profile-container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+    }
+
+    .sidebar .tabs a {
+        text-decoration: none;
+        color: black;
+        font-size: 16px;
+        display: block;
+        padding: 8px 15px;
+        transition: background-color 0.3s ease, transform 0.2s;
+        width: 100%;
+        border: solid 1px rgb(201, 201, 201);
+    }
+
+    .main-content {
+        width: 100%;
+    }
+
+    .sidebar .tabs li {
+        text-align: center;
+    }
+}
