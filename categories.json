@@ -1,0 +1,58 @@
+{
+    "categories": [
+        {
+            "name": "Living Room",
+            "subcategories": [
+                "Sofas & Couches",
+                "Coffee Tables",
+                "TV Stands",
+                "Recliners & Chairs",
+                "Bookshelves"
+            ]
+        },
+        {
+            "name": "Bedroom",
+            "subcategories": [
+                "Beds",
+                "Wardrobes",
+                "Nightstands",
+                "Dressers",
+                "Mattresses"
+            ]
+        },
+        {
+            "name": "Dining Room",
+            "subcategories": [
+                "Dining Tables",
+                "Dining Chairs",
+                "Bar Stools",
+                "Sideboards & Buffets"
+            ]
+        },
+        {
+            "name": "Office",
+            "subcategories": [
+                "Office Desks",
+                "Office Chairs",
+                "Bookshelves",
+                "Filing Cabinets"
+            ]
+        },
+        {
+            "name": "Outdoor",
+            "subcategories": [
+                "Outdoor Seating",
+                "Outdoor Tables",
+                "Garden Furniture",
+                "Hammocks & Swings"
+            ]
+        },
+        {
+            "name": "Home Textile",
+            "subcategories": [
+                "Bed Sheet",
+                "Rug"
+            ]
+        }
+    ]
+}
