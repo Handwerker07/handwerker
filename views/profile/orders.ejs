@@ -1,0 +1,121 @@
+<div class="order-container">
+  <h1>Your Orders</h1>
+
+  <% if (orders.length > 0) { %>
+  <div class="order-list">
+    <% orders.forEach(order => { %>
+    <div class="order-item">
+      <h3>Order #<%= order._id %> - Status: <%= order.status %></h3>
+      <p>Total Price: ₨<%= order.totalPrice.toLocaleString('en-US') %></p>
+      <p>Delivery Address: <%= order.address %></p>
+      <p>Phone Number: <%= order.phoneNumber %></p>
+
+      <ul class="order-items">
+        <% order.items.forEach(item => { %>
+        <li>
+          <%= item.quantity %> x <span class="order-item-title">
+            <%= item.item.name.length > 75 ? item.item.name.slice(0, 75) + '...' : item.item.name %>
+          </span>
+        </li>
+        <% }) %>
+      </ul>
+
+      <div class="order-images">
+        <% order.items.forEach(item => { %>
+        <a href="/product/<%= item.item._id %>">
+          <img src="/api/getImage/<%= item.item.photos[0]._id %>" alt="<%= item.item.name %>" class="order-item-img">
+        </a>
+        <% }) %>
+      </div>
+
+      <!-- Check if the order status allows cancellation -->
+      <% 
+      const isCancelable = !["Completed", "Delivery-ongoing", "PaymentFailed"].includes(order.status) && order.canBeCanceled;
+      %>
+
+      <!-- Display Messages -->
+      <% 
+        let message = "";
+        let messageClass = "";
+
+        if (order.approvalMessage) {
+          message = order.approvalMessage;
+          messageClass = "message-approved";
+        } else if (order.rejectionMessage) {
+          message = order.rejectionMessage;
+          messageClass = "message-rejected";
+        } else if (order.deliveryMessage) {
+          message = order.deliveryMessage;
+          messageClass = "message-delivery";
+        } else if (order.completedMessage) {
+          message = order.completedMessage;
+          messageClass = "message-completed";
+        } else if (order.paymentMessage) {
+          message = order.paymentMessage;
+          messageClass = "message-rejected";
+        }
+      %>
+      <% if (message) { %>
+      <div class="order-message <%= messageClass %>">
+        <p><%= message %></p>
+      </div>
+      <% } %>
+      <% if (isCancelable) { %>
+      <form action="/order/cancel/<%= order._id %>" method="POST">
+        <button type="submit" class="cancel-btn">Cancel Order</button>
+      </form>
+      <% } %>
+
+
+    </div>
+    <% }); %>
+  </div>
+  <% } else { %>
+  <p>You have no orders.</p>
+  <% } %>
+</div>
+
+<style>
+  .order-message {
+    padding: 5px;
+    font-weight: bold;
+    text-align: left;
+    width: 400px;
+  }
+
+  .message-approved {
+    background-color: #ffeca0;
+    color: #000000;
+    border: 1px solid #ffc400;
+  }
+
+  .message-rejected {
+    background-color: #f8d7da;
+    color: #000000;
+    border: 1px solid #f5c6cb;
+  }
+
+  .message-delivery {
+    background-color: #d1ecf1;
+    color: #000000;
+    border: 1px solid #bee5eb;
+  }
+
+  .message-completed {
+    background-color: #e2d1f1;
+    color: #000000;
+    border: 1px solid #d1c4e9;
+  }
+</style>
+
+<script>
+  // Function to limit item titles to 75 characters
+  document.addEventListener("DOMContentLoaded", function() {
+    const itemTitles = document.querySelectorAll(".order-item-title");
+    itemTitles.forEach(title => {
+      if (title.textContent.length > 75) {
+        title.textContent = title.textContent.slice(0, 75) + "...";
+      }
+    });
+  });
+</script>

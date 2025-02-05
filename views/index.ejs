@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Online Furniture Shopping in Mauritius | The Handwerker</title>
+
+  <!-- Meta tags for SEO -->
+  <meta name="title" content="Online Furniture Shopping in Mauritius | The Handwerker">
+  <meta name="description" content="Discover the best online furniture shopping experience in Mauritius with The Handwerker. Find high-quality furniture, unique pieces, and incredible deals delivered right to your door!">
+  <meta name="keywords" content="furniture shopping, online, Mauritius, ecommerce, furniture store, home decor, best prices, fast delivery, The Handwerker, buy furniture online, unique furniture">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="The Handwerker">
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/items.css">
+  <link rel="stylesheet" href="/css/fonts.css">
+
+  <!-- Favicons -->
+  <link rel="apple-touch-icon" sizes="57x57" href="/favicons/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/favicons/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/favicons/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/favicons/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/favicons/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/favicons/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/favicons/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/favicons/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicons/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicons/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+  <link rel="manifest" href="/favicons/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/favicons/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+</head>
+
+<body>
+  <%- include('partials/header') %>
+
+  <!-- Carousel Section -->
+  <div class="carousel-banner">
+    <button class="carousel-arrow left" onclick="moveLeft()">&#10094;</button>
+    <button class="carousel-arrow right" onclick="moveRight()">&#10095;</button>
+    <div class="carousel-slide">
+      <% banners.forEach((banner)=> { %>
+      <div class="carousel-item">
+        <img src="<%= banner.image %>" alt="<%= banner.title %>" class="carousel-image lazy">
+      </div>
+      <% }); %>
+    </div>
+  </div>
+
+  <section class="top-selling-section">
+    <h2>Shop Online Mauritius - Furniture and Home Deco</h2>
+    <p>Discover premium furniture and exquisite home decor to transform your space.</p>
+    <div class="top-selling-container">
+      <div class="top-selling-grid">
+        <% topSaleItems.slice(0, 7).forEach(item => { %>
+        <div class="top-selling-card">
+          <% if (item.offer > 0) { %>
+          <div class="offer-badge"><%= item.offer %>% OFF</div>
+          <% } %>
+          <img src="/images/items/<%= item.photos[0]._id %>.webp" alt="<%= item.name %>" class="top-selling-image lazy primary">
+          <% if (item.photos.length > 1) { %>
+          <img src="/images/items/<%= item.photos[1]._id %>.webp" alt="<%= item.name %>" class="top-selling-image lazy secondary">
+          <% } %>
+          <div class="top-selling-info">
+            <h4><%= item.name %></h4>
+            <p>₨<%= ((item.price - (item.price * item.offer / 100)).toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 })) %></p>
+            <a href="/product/<%= item._id %>" class="view-details-button">Product Details</a>
+          </div>
+        </div>
+        <% }); %>
+      </div>
+    </div>
+  </section>
+
+  <!-- New Arrival Section -->
+  <section class="new-arrival-section">
+    <h2>New Arrival</h2>
+    <div class="new-arrival-grid">
+      <% latestItems.slice(0, 4).forEach(item=> { %>
+      <div class="new-arrival-card">
+        <img src="/images/items/<%= item.photos[0]._id %>.webp" alt="Photo of <%= item.name %>" class="new-arrival-card lazy">
+        <div class="new-arrival-overlay">
+          <h3 class="new-arrival-title">
+            <%= item.category.split('> ')[0] %>
+          </h3>
+          <a href="/categories/<%= encodeURIComponent(item.category.split(' > ')[0]) %>/<%= encodeURIComponent(item.subcategory) %>" class="new-arrival-button">
+            <span>&#8592;</span> Explore
+          </a>
+        </div>
+      </div>
+      <% }); %>
+    </div>
+    <div class="new-arrival-grid">
+      <% latestItems.slice(4, 8).forEach(item=> { %>
+      <div class="new-arrival-card">
+        <img src="/images/items/<%= item.photos[0]._id %>.webp" alt="Photo of <%= item.name %>" class="new-arrival-card lazy">
+        <div class="new-arrival-overlay">
+          <h3 class="new-arrival-title">
+            <%= item.category.split('> ')[0] %>
+          </h3>
+          <a href="/categories/<%= encodeURIComponent(item.category.split(' > ')[0]) %>/<%= encodeURIComponent(item.subcategory) %>" class="new-arrival-button">
+            <span>&#8592;</span> Explore
+          </a>
+        </div>
+      </div>
+      <% }); %>
+    </div>
+  </section>
+
+  <!-- Shop by Category Section -->
+  <section class="shop-by-category-section">
+    <h2>Our Home And Decoration Furniture</h2>
+    <div class="category-tabs">
+      <a href="#" class="tab active" data-category="all">All</a>
+      <% categoryItems.forEach(category => { %>
+      <a href="#" class="tab" data-category="<%= category.name %>"><%= category.name %></a>
+      <% }); %>
+    </div>
+    <div class="category-grid">
+      <!-- Grid items will be injected here -->
+    </div>
+  </section>
+
+
+  <%- include('partials/MobileMenu') %>
+  <%- include('partials/footer') %>
+
+  <script src="/js/banner.js"></script>
+  <script src="/js/carousel.js"></script>
+  <script>
+    const allItems = <%- JSON.stringify(
+      categories.reduce((acc, category) => {
+        acc[category.name] = categoryItems.find(c => c.name === category.name)?.items || [];
+        return acc;
+      }, { all: allTabItems })
+    ) %>;
+  </script>
+</body>
+
+</html>

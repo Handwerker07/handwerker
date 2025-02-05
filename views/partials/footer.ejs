@@ -1,0 +1,52 @@
+<link rel="stylesheet" href="/css/fonts.css">
+<link rel="stylesheet" href="/css/footer.css">
+<link rel="stylesheet" href="/css/all.min.css">
+
+<footer class="custom-footer">
+  <div class="footer-container">
+    <!-- Categories -->
+    <div class="footer-column categories-info">
+      <h3 class="footer-title">Categories</h3>
+      <ul class="footer-categories-list">
+        <% categories.forEach(category => { %>
+        <li class="footer-category-item">
+          <a href="/categories/<%= encodeURIComponent(category.name) %>" class="footer-category-link">
+            <%= category.name %>
+          </a>
+        </li>
+        <% }); %>
+      </ul>
+    </div>
+
+    <!-- Quick Links -->
+    <div class="footer-column quick-links">
+      <h3 class="footer-title">Quick Links</h3>
+      <ul class="footer-list">
+        <li><a href="/" class="footer-link">Home</a></li>
+        <li><a href="/article/about" class="footer-link">About Us</a></li>
+        <li><a href="/article/contact" class="footer-link">Contact Us</a></li>
+        <li><a href="/article/projects" class="footer-link">Projects</a></li>
+        <li><a href="/article/delivery" class="footer-link">Delivery</a></li>
+        <li><a href="/article/terms" class="footer-link">Terms and Conditions</a></li>
+      </ul>
+    </div>
+
+    <!-- Social Media Links -->
+    <div class="footer-column social-media">
+      <!-- Typo Image -->
+      <div class="footer-logo">
+        <img src="/images/logo.png" alt="Logo" loading="lazy">
+      </div>
+      <h3 class="footer-title">Follow Us</h3>
+      <div class="social-icons">
+        <a href="https://www.facebook.com/Thehandwerker" target="_blank" class="social-icon"><i class="fab fa-facebook"></i></a>
+        <a href="https://www.instagram.com/the.handwerker" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
+        <a href="mailto:thehandwerkerfurniture@gmail.com" class="social-icon"><i class="fas fa-envelope"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>&copy; 1995 The Handwerker - All Rights Reserved</p>
+  </div>
+</footer>

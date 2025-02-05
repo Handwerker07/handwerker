@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>
+    <%= item.name %> - Product View
+  </title>
+
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/view.css">
+  <link rel="stylesheet" href="/css/fonts.css">
+
+  <link rel="apple-touch-icon" sizes="57x57" href="/favicons/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/favicons/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/favicons/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/favicons/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/favicons/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/favicons/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/favicons/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/favicons/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicons/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicons/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+  <link rel="manifest" href="/favicons/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/favicons/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+</head>
+
+<body>
+  <%- include('partials/header') %>
+  <div class="container">
+    <div class="product-view">
+
+      <div class="image-gallery">
+
+        <!-- Main Image -->
+        <div class="main-image-container">
+          <div class="main-image" id="mainImage" style="background-image: url('/images/items/<%= item.photos[0]._id %>.webp');">
+          </div>
+
+          <!-- Zoomed Image Box -->
+          <div class="zoom-box" id="zoomBox"></div>
+        </div>
+
+        <!-- Thumbnail Images -->
+        <div class="thumbnails">
+          <% item.photos.forEach(function(photo, index) { %>
+          <div class="thumbnail <%= index === 0 ? 'active' : '' %>" style="background-image: url('/images/items/<%= photo._id %>.webp');" data-photo-id="<%= photo._id %>">
+          </div>
+          <% }) %>
+        </div>
+      </div>
+
+      <!-- Product Info -->
+      <div class="product-info">
+        <!-- Product Name -->
+        <h1 style="margin-bottom: 10px;"><%= item.name %></h1>
+        <p><%= item.category %></p>
+
+        <!-- Price Section -->
+        <% if (item.offer > 0) { %>
+        <div class="price">
+          <span class="discounted-price">₨<%= ((item.price - (item.price * item.offer / 100)).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })) %></span>
+          <span class="original-price">₨<%= item.price.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) %></span>
+        </div>
+        <% } else { %>
+        <div class="price">
+          <span class="regular-price">₨<%= item.price.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) %></span>
+        </div>
+        <% } %>
+
+        <!-- Stock Status -->
+        <% if (item.stock > 0) { %>
+        <p class="stock-info" style="color: #59c379;">In stock: <%= item.stock %> Items</p>
+        <% } else { %>
+        <p class="stock-info out-of-stock" style="color: #c35959;">Out of Stock</p>
+        <% } %>
+
+        <!-- Quantity Selection -->
+        <% if (item.stock > 0) { %>
+        <form action="/cart/add" method="POST" class="quantity-form">
+          <div class="quantity-container">
+            <label for="quantity" class="quantity-label">Quantity:</label>
+            <div class="custom-quantity-box">
+              <!-- Left side (Number display) -->
+              <div class="quantity-number">
+                <input type="text" name="quantity" id="quantity" value="1" min="1" max="<%= item.stock %>" readonly class="quantity-input" />
+              </div>
+
+              <!-- Right side (Buttons) -->
+              <div class="quantity-btn-container">
+                <button type="button" class="quantity-btn increment-btn">+</button>
+                <button type="button" class="quantity-btn decrement-btn">-</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Buttons Container -->
+          <div class="buttons-container">
+            <button type="submit" class="add-to-cart-btn">Add to Cart</button>
+
+            <!-- Add to Favourite Button -->
+            <button type="button" class="add-to-fav-btn" id="favoriteBtn" data-item-id="<%= item._id %>">
+              <img src="/icons/heart2.png" alt="Favorite">
+            </button>
+          </div>
+
+          <input type="hidden" name="itemId" value="<%= item._id %>">
+        </form>
+        <% } %>
+      </div>
+    </div>
+
+    <div class="tabs-container">
+      <!-- Description Tab -->
+      <div class="tab">
+        <div class="tab-header">
+          <h3>Description</h3>
+          <button class="toggle-btn" data-target="description" aria-expanded="true">-</button>
+        </div>
+        <div class="tab-content description-content" id="description">
+          <%- markdownDescription %>
+        </div>
+      </div>
+
+      <!-- Product Details Tab -->
+      <div class="tab">
+        <div class="tab-header">
+          <h3>Product Details</h3>
+          <button class="toggle-btn" data-target="details" aria-expanded="false">+</button>
+        </div>
+        <div class="tab-content details-content" id="details" style="max-height: 0; overflow: hidden;">
+          <div class="tab-content details-content" id="details">
+            <%- markdownDetails %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <%- include('partials/MobileMenu') %>
+  <%- include('partials/footer') %>
+
+  <script src="/js/view.js"></script>
+</body>
+
+</html>

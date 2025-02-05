@@ -1,0 +1,162 @@
+<link rel="stylesheet" href="/css/all.min.css">
+<link rel="stylesheet" href="/css/fonts.css">
+
+
+<div class="buy-bottom-bar">
+  <ul class="buy-nav">
+    <!-- WhatsApp Live Chat Icon on the Left -->
+    <li class="nav-left">
+      <a href="https://wa.me/23054586471" target="_blank" class="nav-link">
+        <i class="fab fa-whatsapp"></i>
+        <span>Live Chat</span>
+      </a>
+    </li>
+
+    <!-- Quantity Selector and Add to Cart Button on the Right -->
+    <li class="nav-right">
+
+      <form action="/cart/add" method="POST">
+        <input type="hidden" name="itemId" value="<%= item._id %>">
+        <button type="submit" class="buy-now-btn">Buy Now</button>
+      </form>
+
+      <!-- Add to Cart Button -->
+      <form action="/cart/add" method="POST">
+        <input type="hidden" name="itemId" value="<%= item._id %>">
+        <button type="submit" class="add-to-cart-btnn">Add to Cart</button>
+      </form>
+    </li>
+  </ul>
+</div>
+
+<style>
+  /* Enhanced Bottom Buy Bar Styles */
+  .buy-bottom-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: white;
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 15px;
+    box-shadow: 0px -2px 10px rgba(0, 0, 0, 0.15);
+    z-index: 100;
+    transition: transform 0.3s ease;
+    /* Smooth transition for hiding/showing */
+  }
+
+  .buy-bottom-bar.hide {
+    transform: translateY(100%);
+    /* Move the bar down */
+  }
+
+  .buy-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+
+  .nav-left {
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  .nav-right {
+    flex: 3;
+    /* More space for the quantity and cart button */
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  .nav-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: rgb(43, 43, 43);
+    font-size: 14px;
+    text-decoration: none;
+  }
+
+  .nav-link i {
+    font-size: 32px;
+    /* Larger WhatsApp icon */
+    color: #25d366;
+    /* WhatsApp green */
+  }
+
+  .nav-link span {
+    margin-top: 4px;
+    font-size: 14px;
+    color: rgb(43, 43, 43);
+  }
+
+  .nav-link:hover {
+    color: grey;
+  }
+
+  /* Add to Cart Button */
+  .add-to-cart-btnn {
+    background-color: #51c5e8;
+    color: white;
+    padding: 12px 25px;
+    font-size: 16px;
+    /* Larger text for better visibility */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  /* Add to Cart Button */
+  .buy-now-btn {
+    background-color: #02afef;
+    color: white;
+    padding: 12px 25px;
+    font-size: 16px;
+    /* Larger text for better visibility */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 10px;
+  }
+
+  .add-to-cart-btnn:hover {
+    background-color: #005fa3;
+  }
+
+  /* Responsive Design */
+  @media (min-width: 769px) {
+    .buy-bottom-bar {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  let lastScrollTop = 0;
+  const buyBottomBar = document.querySelector('.buy-bottom-bar');
+
+  window.addEventListener('scroll', function() {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+    if (scrollTop > lastScrollTop) {
+      // Scrolling down
+      buyBottomBar.classList.add('hide');
+    } else {
+      // Scrolling up
+      buyBottomBar.classList.remove('hide');
+    }
+
+    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For Mobile or negative scrolling
+  });
+</script>

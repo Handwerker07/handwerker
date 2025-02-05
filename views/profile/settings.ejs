@@ -1,0 +1,97 @@
+<div class="form-container">
+  <h2>Account Settings</h2>
+  <form action="/profile/settings" method="POST" id="profile-form">
+    <!-- Name -->
+    <div class="input-group">
+      <input type="text" id="name" name="name" placeholder="Name" value="<%= user.name %>" required />
+    </div>
+
+    <!-- Email (Locked) -->
+    <div class="input-group">
+      <input type="email" id="email" name="email" placeholder="Email" value="<%= user.email %>" readonly />
+    </div>
+
+    <!-- Gender -->
+    <div class="input-group">
+      <select id="gender" name="gender" required>
+        <option value="N/A" <%= user.gender === "N/A" ? "selected" : "" %>>Prefer not to say</option>
+        <option value="Male" <%= user.gender === "Male" ? "selected" : "" %>>Male</option>
+        <option value="Female" <%= user.gender === "Female" ? "selected" : "" %>>Female</option>
+        <option value="Other" <%= user.gender === "Other" ? "selected" : "" %>>Other</option>
+      </select>
+    </div>
+
+    <!-- Date of Birth -->
+    <div class="input-group">
+      <input type="date" id="dob" name="dob" value="<%= user.dob.toISOString().split('T')[0] %>" required />
+    </div>
+
+    <!-- Password Input -->
+    <div class="input-group">
+      <input type="password" id="password" name="password" placeholder="New Password" />
+      <span class="toggle-password" onclick="togglePasswordVisibility('password')">👁️</span>
+    </div>
+
+    <!-- Confirm Password Input -->
+    <div class="input-group">
+      <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm Password" />
+      <span class="toggle-password" onclick="togglePasswordVisibility('confirm-password')">👁️</span>
+    </div>
+
+    <!-- Error Message -->
+    <p id="error-message" style="color: red; display: none;">Passwords do not match.</p>
+
+    <!-- Save Button -->
+    <button type="submit" class="save-btn">Save Changes</button>
+  </form>
+</div>
+
+<style>
+  .input-group input,
+  .input-group select {
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid #000000;
+    font-size: 16px;
+    padding: 10px 0;
+    outline: none;
+    background: transparent;
+    color: black;
+    transition: border-color 0.3s ease;
+  }
+
+  .save-btn {
+    background-color: #000;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s ease;
+  }
+
+  .save-btn:hover {
+    background-color: #555;
+  }
+</style>
+
+<script>
+  document.getElementById('profile-form').addEventListener('submit', function(e) {
+    const password = document.getElementById('password').value;
+    const confirmPassword = document.getElementById('confirm-password').value;
+    const errorMessage = document.getElementById('error-message');
+
+    if (password && password !== confirmPassword) {
+      e.preventDefault(); // Prevent form submission
+      errorMessage.style.display = 'block'; // Show error message
+    } else {
+      errorMessage.style.display = 'none'; // Hide error message
+    }
+  });
+
+  function togglePasswordVisibility(inputId) {
+    const input = document.getElementById(inputId);
+    input.type = input.type === 'password' ? 'text' : 'password';
+  }
+</script>

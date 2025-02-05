@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Favourite Products | The Handwerker</title>
+  <link rel="stylesheet" href="/css/items.css">
+  <link rel="stylesheet" href="/css/searchResult.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/fonts.css">
+  <style>
+    .text-links {
+      font-size: 16px;
+      font-weight: bold;
+      margin-top: 5px;
+      text-align: center;
+      margin-top: 7px;
+      padding: 10px 30px;
+    }
+
+    .text-links a {
+      text-decoration: none;
+      transition: color 0.3s ease;
+      color: black;
+      /* Blue for View */
+    }
+
+    .text-links a:hover {
+      color: #555;
+    }
+  </style>
+</head>
+
+<body>
+  <%- include('partials/header') %>
+
+  <section class="shop-by-category-section">
+    <h2>Your Favourite Products</h2>
+
+    <div class="category-grid">
+      <% if (items.length > 0) { %>
+      <% items.forEach(item => { %>
+      <div class="top-selling-card">
+        <div class="image-container">
+          <% if (item.offer > 0) { %>
+          <div class="offer-badge"><%= item.offer %>% OFF</div>
+          <% } %>
+          <img src="/images/items/<%= item.photos[0]._id %>.webp" alt="<%= item.name %>" class="top-selling-image primary">
+          <% if (item.photos.length > 1) { %>
+          <img src="/images/items/<%= item.photos[1]._id %>.webp" alt="<%= item.name %>" class="top-selling-image secondary">
+          <% } %>
+        </div>
+
+        <div class="top-selling-info">
+          <h4><%= item.name %></h4>
+          <p>₨<%= item.price.toLocaleString() %></p>
+
+          <!-- Text-based links -->
+          <div class="text-links">
+            <a href="/product/<%= item._id %>" class="view-link">View Product</a> |
+            <a href="#" class="remove-link" data-id="<%= item._id %>">Remove Product</a>
+          </div>
+        </div>
+      </div>
+      <% }) %>
+      <% } else { %>
+      <p style="text-align: center; font-size: 18px; font-weight: bold; margin-top: 20px;">
+        No favourite products found.
+      </p>
+      <% } %>
+    </div>
+  </section>
+
+  <%- include('partials/footer') %>
+  <script src="/js/favourites.js"></script>
+</body>
+
+</html>

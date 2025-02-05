@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Explore Categories | The Handwerker</title>
+  <link rel="stylesheet" href="/css/explore.css">
+</head>
+
+<body>
+  <%- include('partials/header') %>
+
+  <div class="explore-container">
+    <h2>Explore Categories</h2>
+
+    <!-- Categories List -->
+    <div class="categories-grid">
+      <% categories.forEach(category => { %>
+      <div class="category-card">
+        <!-- Category Name -->
+        <h3 class="category-title">
+          <a href="/categories/<%= encodeURIComponent(category.name) %>"><%= category.name %></a>
+        </h3>
+
+        <!-- Subcategories List -->
+        <ul class="subcategory-list">
+          <% category.subcategories.forEach(subcategory => { %>
+          <li class="subcategory-name">
+            <a href="/categories/<%= encodeURIComponent(category.name) %>/<%= encodeURIComponent(subcategory) %>">
+              <%= subcategory %>
+            </a>
+          </li>
+          <% }) %>
+        </ul>
+      </div>
+      <% }) %>
+    </div>
+  </div>
+
+  <%- include('partials/MobileMenu') %>
+  <%- include('partials/footer') %>
+</body>
+
+</html>

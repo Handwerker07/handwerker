@@ -1,0 +1,124 @@
+<link rel="stylesheet" href="/css/all.min.css">
+<link rel="stylesheet" href="/css/header.css">
+<link rel="stylesheet" href="/css/fonts.css">
+
+<!-- Success Message -->
+<% if (success.length > 0) { %>
+<div class="alert alert-success" style="display: block;">
+  <span class="close-btn" onclick="this.parentElement.style.display='none';">&times;</span>
+  <%= success %>
+</div>
+<% } %>
+
+<!-- Error Message -->
+<% if (error.length > 0) { %>
+<div class="alert alert-error" style="display: block;">
+  <span class="close-btn" onclick="this.parentElement.style.display='none';">&times;</span>
+  <%= error %>
+</div>
+<% } %>
+
+<!-- Mini Top Bar for Call and WhatsApp -->
+<div class="top-bar">
+  <nav class="top-nav">
+    <a href="tel:+1234567890" class="top-bar-icon" title="Call Us">
+      <i class="fas fa-phone"></i>
+    </a>
+    <a href="https://wa.me/1234567890" class="top-bar-icon" title="WhatsApp Us">
+      <i class="fab fa-whatsapp"></i>
+    </a>
+  </nav>
+</div>
+
+
+<!-- Main Navbar -->
+<header class="main-header">
+  <!-- Logo Section -->
+  <div class="logo">
+    <a href="/">
+      <img src="/images/typo.png" alt="Retail Shop Logo" class="typo-logo" />
+    </a>
+  </div>
+
+  <!-- Search Bar -->
+  <div class="search-bar">
+    <form action="/search" method="GET">
+      <input type="text" name="query" placeholder="Search products..." required value="<%= typeof searchQuery !== 'undefined' ? searchQuery : '' %>" /> <!-- Conditionally set value -->
+      <button type="submit">
+        <img src="/icons/search.png" alt="Search" height="28" style="margin-top: 13px;"/>
+      </button>
+    </form>
+  </div>
+
+  <!-- Icons Section -->
+  <div class="top-icons">
+    <!-- Profile Icon with Dropdown -->
+    <div class="profile-menu">
+      <a href="#" class="profile-icon">
+        <img src="/icons/account.png" alt="Profile" height="33" />
+      </a>
+      <div class="dropdown-menu">
+        <ul>
+          <% if (user) { %>
+          <li>
+            <a href="/profile">Profile</a>
+          </li>
+          <li>
+            <a href="/auth/logout">Logout</a>
+          </li>
+          <% } else { %>
+          <li>
+            <a href="/auth/login">Login</a>
+          </li>
+          <li>
+            <a href="/auth/signup">Sign Up</a>
+          </li>
+          <% } %>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Heart (Favorite List) Icon -->
+    <a href="<%= user ? '/favourites' : '/auth/login?redirect=/favourites' %>" class="heart-icon">
+      <img src="/icons/heart.png" alt="Favorites" height="33" />
+    </a>
+
+    <!-- Cart Icon -->
+    <a href="/cart">
+      <img src="/icons/cart.png" alt="Cart" height="33" />
+    </a>
+  </div>
+</header>
+<!-- Categories Bar -->
+<div class="categories-bar">
+  <ul class="categories-list">
+    <% categories.slice(0, 7).forEach(category => { %>
+    <li class="category-item">
+      <a href="/categories/<%= category.name %>" class="category-link">
+        <%= category.name %>
+      </a>
+      <div class="subcategory-dropdown">
+        <a href="/categories/<%= category.name %>" class="subcategory-dropdown-title"><%= category.name %></a>
+        <ul>
+          <% category.subcategories.forEach(subcategory => { %>
+          <li>
+            <a href="/categories/<%= encodeURIComponent(category.name) %>/<%= encodeURIComponent(subcategory) %>">
+              <%= subcategory %>
+            </a>
+          </li>
+          <% }); %>
+        </ul>
+      </div>
+    </li>
+    <% }); %>
+    <li>
+      <a href="/catalogues" class="explore-more-link">Catalogues</a>
+    </li>
+    <li>
+      <a href="/article/projects" class="explore-more-link">Custom Furnitures</a>
+    </li>
+    <li>
+      <a href="/explore" class="explore-more-link">Explore More</a>
+    </li>
+  </ul>
+</div>

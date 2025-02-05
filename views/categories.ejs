@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>
+    <%= category %> - <%= subCategory %>
+  </title>
+  <link rel="stylesheet" href="/css/items.css">
+  <link rel="stylesheet" href="/css/searchResult.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/fonts.css">
+
+
+  <!-- Favicons -->
+  <link rel="apple-touch-icon" sizes="57x57" href="/favicons/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/favicons/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/favicons/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/favicons/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/favicons/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/favicons/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/favicons/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/favicons/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicons/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicons/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+  <link rel="manifest" href="/favicons/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/favicons/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+</head>
+
+<body>
+
+  <%- include('partials/header') %>
+
+  <!-- Breadcrumb Image -->
+  <div class="breadcrumb-image">
+    <div class="breadcrumb-text">
+      <!-- Display final category or sub-category -->
+      <h1><%= subCategory || category || "Home" %></h1>
+      <p>
+        <a href="/">Home</a>
+        <% if (category) { %>
+        / <a href="/categories/<%= category %>"><%= category %></a>
+        <% } %>
+        <% if (subCategory) { %>
+        / <a href="/categories/<%= category %>/<%= subCategory %>"><%= subCategory %></a>
+        <% } %>
+      </p>
+    </div>
+  </div>
+
+  <div class="search-bar-result">
+
+    <div class="sorting-options">
+      <form action="/categories/<%= category %>/<%= subCategory %>" method="GET" class="sorting-form">
+        <label for="sort">Sort by:</label>
+        <select id="sort" name="sort" onchange="this.form.submit()">
+          <option value="best-match" <%=sortOption==='best-match' ? 'selected' : '' %>>Best Match</option>
+          <option value="high-to-low" <%=sortOption==='high-to-low' ? 'selected' : '' %>>Price: High to Low</option>
+          <option value="low-to-high" <%=sortOption==='low-to-high' ? 'selected' : '' %>>Price: Low to High</option>
+        </select>
+      </form>
+    </div>
+  </div>
+
+  <div class="search-section">
+    <% if (items.length> 0) { %>
+    <div class="category-grid">
+      <% items.forEach(item=> { %>
+      <div class="top-selling-card">
+        <% if (item.offer > 0) { %>
+        <div class="offer-badge"><%= item.offer %>% OFF</div>
+        <% } %>
+        <img src="/images/items/<%= item.photos[0]._id %>.webp" alt="<%= item.name %>" class="top-selling-image primary">
+
+        <% if (item.photos.length > 1) { %>
+        <img src="/images/items/<%= item.photos[1]._id %>.webp" alt="<%= item.name %>" class="top-selling-image secondary">
+        <% } %>
+
+        <div class="top-selling-info">
+          <h4><%= item.name %></h4>
+          <p>₨<%= item.price.toLocaleString() %></p>
+        </div>
+        <a href="/product/<%= item._id %>" class="view-details-button">Product Details</a>
+      </div>
+      <% }) %>
+    </div>
+
+    <!-- Pagination Controls -->
+    <div class="pagination">
+      <% if (currentPage> 1) { %>
+      <a href="/categories/<%= category %>/<%= subCategory %>?sort=<%= sortOption %>&page=<%= currentPage - 1 %>">Prev</a>
+      <% } %>
+
+      <% const maxVisiblePages=4; const halfVisible=Math.floor(maxVisiblePages / 2); let startPage=Math.max(1,
+                currentPage - halfVisible); let endPage=Math.min(totalPages, startPage + maxVisiblePages - 1); if
+                (endPage - startPage < maxVisiblePages - 1) { startPage=Math.max(1, endPage - maxVisiblePages + 1); }
+                startPage=Math.max(1, Math.min(startPage, totalPages - maxVisiblePages + 1));
+                endPage=Math.min(totalPages, startPage + maxVisiblePages - 1); %>
+
+      <% for (let i=startPage; i <=endPage; i++) { %>
+      <a href="/categories/<%= category %>/<%= subCategory %>?sort=<%= sortOption %>&page=<%= i %>" class="<%= currentPage === i ? 'active' : '' %>">
+        <%= i %>
+      </a>
+      <% } %>
+
+      <% if (currentPage < totalPages) { %>
+      <a href="/categories/<%= category %>/<%= subCategory %>?sort=<%= sortOption %>&page=<%= currentPage + 1 %>">Next</a>
+      <% } %>
+    </div>
+
+    <% } else { %>
+    <p>No items found in "<%= category %>" / "<%= subCategory %>".</p>
+    <% } %>
+  </div>
+
+  <%- include('partials/MobileMenu') %>
+  <%- include('partials/footer') %>
+</body>
+
+</html>

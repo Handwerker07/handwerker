@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up | The Handwerker</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/fonts.css">
+
+  <!-- Favicons -->
+  <link rel="apple-touch-icon" sizes="57x57" href="/favicons/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/favicons/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/favicons/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/favicons/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/favicons/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/favicons/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/favicons/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/favicons/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicons/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicons/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+  <link rel="manifest" href="/favicons/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/favicons/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+</head>
+
+<body>
+  <%- include('partials/header') %>
+
+  <div class="form-container">
+    <h2>Sign Up</h2>
+    <form action="/auth/signup" method="POST">
+      <!-- Full Name Input -->
+      <div class="input-group">
+        <input type="text" id="name" name="name" placeholder="Full Name" required>
+        <span class="input-underline"></span>
+      </div>
+
+      <!-- Email Input -->
+      <div class="input-group">
+        <input type="email" id="email" name="email" placeholder="Email" required>
+        <span class="input-underline"></span>
+      </div>
+
+      <!-- Password Input -->
+      <div class="input-group">
+        <input type="password" id="password" name="password" placeholder="Password" required>
+        <span id="toggle-password" class="toggle-password">
+          <i class="fas fa-eye"></i>
+        </span>
+        <span class="input-underline"></span>
+      </div>
+
+      <!-- Date of Birth -->
+      <label for="dob" class="dob-label">Date of Birth:</label>
+      <div class="dob-container">
+        <select name="day" required>
+          <option value="">Day</option>
+          <% for (let i = 1; i <= 31; i++) { %>
+          <option value="<%= i %>"><%= i %></option>
+          <% } %>
+        </select>
+
+        <select name="month" required>
+          <option value="">Month</option>
+          <option value="1">January</option>
+          <option value="2">February</option>
+          <option value="3">March</option>
+          <option value="4">April</option>
+          <option value="5">May</option>
+          <option value="6">June</option>
+          <option value="7">July</option>
+          <option value="8">August</option>
+          <option value="9">September</option>
+          <option value="10">October</option>
+          <option value="11">November</option>
+          <option value="12">December</option>
+        </select>
+
+        <select name="year" required>
+          <option value="">Year</option>
+          <% for (let i = 1920; i <= new Date().getFullYear(); i++) { %>
+          <option value="<%= i %>"><%= i %></option>
+          <% } %>
+        </select>
+      </div>
+
+      <!-- Sign Up Button -->
+      <button type="submit" class="signup-btn">Sign Up</button>
+    </form>
+  </div>
+
+  <%- include('partials/MobileMenu') %>
+  <%- include('partials/footer') %>
+
+  <script>
+    const passwordInput = document.getElementById("password");
+    const togglePassword = document.getElementById("toggle-password");
+
+    togglePassword.addEventListener("click", () => {
+      const type = passwordInput.getAttribute("type") === "password" ? "text" : "password";
+      passwordInput.setAttribute("type", type);
+
+      const icon = togglePassword.querySelector("i");
+      icon.classList.toggle("fa-eye");
+      icon.classList.toggle("fa-eye-slash");
+    });
+  </script>
+
+</body>
+
+</html>
