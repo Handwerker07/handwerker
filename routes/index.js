@@ -89,7 +89,6 @@ router.get('/', async (req, res) => {
                 { image: '/images/banner1.jpg' },
                 { image: '/images/banner2.jpg' },
                 { image: '/images/banner3.jpg' },
-                { image: '/images/banner4.jpg' },
             ],
             user: req.user,
             categoryItems: categoryItemsWithPhotoIds, // Pass category items with photo IDs only
