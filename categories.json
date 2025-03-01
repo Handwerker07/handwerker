@@ -3,55 +3,57 @@
         {
             "name": "Living Room",
             "subcategories": [
-                "Sofas & Couches",
+                "Sofas",
+                "Sofa Sets",
                 "Coffee Tables",
-                "TV Stands",
-                "Recliners & Chairs",
-                "Bookshelves"
+                "Side Tables",
+                "TV Cabinets"
             ]
         },
         {
             "name": "Bedroom",
             "subcategories": [
                 "Beds",
+                "Bedside",
                 "Wardrobes",
-                "Nightstands",
-                "Dressers",
-                "Mattresses"
+                "Dressing Tables",
+                "Chest of Drawers"
             ]
         },
         {
             "name": "Dining Room",
             "subcategories": [
                 "Dining Tables",
-                "Dining Chairs",
-                "Bar Stools",
-                "Sideboards & Buffets"
-            ]
-        },
-        {
-            "name": "Office",
-            "subcategories": [
-                "Office Desks",
-                "Office Chairs",
-                "Bookshelves",
-                "Filing Cabinets"
+                "Dining Chairs"
             ]
         },
         {
             "name": "Outdoor",
             "subcategories": [
-                "Outdoor Seating",
-                "Outdoor Tables",
-                "Garden Furniture",
-                "Hammocks & Swings"
+                "Sunbeds",
+                "Sofa Sets"
             ]
         },
         {
-            "name": "Home Textile",
+            "name": "Others",
             "subcategories": [
-                "Bed Sheet",
-                "Rug"
+                "Shoe Racks",
+                "Consoles",
+                "Shelves & bookshelves",
+                "Sideboards & Cabinets",
+                "Benches",
+                "Bathroom Cabinets",
+                "Desk",
+                "Desk chair"
+            ]
+        },
+        {
+            "name": "Decoration & Lighting",
+            "subcategories": [
+                "Vases",
+                "Mirrors",
+                "Decorative Accents",
+                "Ceiling Lamps"
             ]
         }
     ]
